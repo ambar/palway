@@ -23,5 +23,15 @@
     "rules": {
       "recommended": true
     }
-  }
+  },
+  "overrides": [
+    {
+      "include": [".vscode/*.json", ".cspell.json"],
+      "json": {
+        "parser": {
+          "allowComments": true
+        }
+      }
+    }
+  ]
 }
