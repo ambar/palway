@@ -1,0 +1,56 @@
+.graph > polygon {
+  visibility: hidden;
+}
+
+/* source text for export only */
+.graph > text {
+  visibility: hidden;
+}
+
+.graph path {
+  stroke: currentColor;
+}
+
+.graph .node image {
+  translate: 0 -5px;
+}
+
+.graph .node.root polygon {
+  /* 5da9a9 */
+  fill: #5da9a9;
+  /* fill: light-dark(#8bcccc,#183636); */
+  /* @media (prefers-color-scheme: light) {
+    fill: #8bcccc;
+  } */
+  :root[class*="dark"] & {
+    fill: #183636;
+  }
+  @media (prefers-color-scheme: dark) {
+    fill: #183636;
+  }
+}
+
+.graph .node polygon {
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+.graph .node text {
+  fill: currentColor;
+  translate: 0 -5px;
+}
+
+.graph .edge polygon {
+  fill: currentColor;
+  /* filter: invert(1); */
+}
+
+.graph .edge path {
+  stroke-dasharray: 5,2;
+  animation: fx-dot-dash 1s linear infinite reverse;
+}
+
+@keyframes fx-dot-dash {
+  to {
+    stroke-dashoffset: 20;
+  }
+}

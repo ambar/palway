@@ -1,4 +1,7 @@
 import * as fs from 'fs'
+import assert from 'node:assert'
+import stringify from 'json-stringify-pretty-compact'
+import {normalPalsByName} from '../src/lib/pals'
 const csvFilePath = './src/data/uniqueCombos.csv'
 const jsonFilePath = './src/data/uniqueCombos.json'
 
@@ -15,8 +18,15 @@ for (let i = 1; i < lines.length; i++) {
   for (let j = 0; j < headers.length; j++) {
     jsonLine[headers[j]] = currentLine[j]
   }
-
   jsonData.push(jsonLine)
+  assert(jsonLine.ResultName in normalPalsByName)
+  assert(jsonLine.Parent1Name in normalPalsByName)
+  assert(jsonLine.Parent2Name in normalPalsByName)
 }
 
-fs.writeFileSync(jsonFilePath, JSON.stringify(jsonData, null, 2))
+fs.writeFileSync(
+  jsonFilePath,
+  stringify(jsonData, {
+    maxLength: 999,
+  }),
+)

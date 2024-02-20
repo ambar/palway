@@ -1,226 +1,30 @@
 [
-  {
-    "ResultIndex": "85",
-    "ResultName": "Relaxaurus Lux",
-    "Parent1Index": "85",
-    "Parent1Name": "Relaxaurus",
-    "Parent1Index2": "7",
-    "Parent2Name": "Sparkit"
-  },
-  {
-    "ResultIndex": "40",
-    "ResultName": "Incineram Noct",
-    "Parent1Index": "40",
-    "Parent1Name": "Incineram",
-    "Parent1Index2": "66",
-    "Parent2Name": "Maraith"
-  },
-  {
-    "ResultIndex": "24",
-    "ResultName": "Mau Cryst",
-    "Parent1Index": "24",
-    "Parent1Name": "Mau",
-    "Parent1Index2": "10",
-    "Parent2Name": "Pengullet"
-  },
-  {
-    "ResultIndex": "71",
-    "ResultName": "Vanwyrm Cryst",
-    "Parent1Index": "71",
-    "Parent1Name": "Vanwyrm",
-    "Parent1Index2": "57",
-    "Parent2Name": "Foxcicle"
-  },
-  {
-    "ResultIndex": "37",
-    "ResultName": "Eikthyrdeer Terra",
-    "Parent1Index": "37",
-    "Parent1Name": "Eikthyrdeer",
-    "Parent1Index2": "32",
-    "Parent2Name": "Hangyu"
-  },
-  {
-    "ResultIndex": "80",
-    "ResultName": "Elphidran Aqua",
-    "Parent1Index": "80",
-    "Parent1Name": "Elphidran",
-    "Parent1Index2": "65",
-    "Parent2Name": "Surfent"
-  },
-  {
-    "ResultIndex": "58",
-    "ResultName": "Pyrin Noct",
-    "Parent1Index": "58",
-    "Parent1Name": "Pyrin",
-    "Parent1Index2": "75",
-    "Parent2Name": "Katress"
-  },
-  {
-    "ResultIndex": "90",
-    "ResultName": "Mammorest Cryst",
-    "Parent1Index": "90",
-    "Parent1Name": "Mammorest",
-    "Parent1Index2": "91",
-    "Parent2Name": "Wumpo"
-  },
-  {
-    "ResultIndex": "33",
-    "ResultName": "Mossanda Lux",
-    "Parent1Index": "33",
-    "Parent1Name": "Mossanda",
-    "Parent1Index2": "103",
-    "Parent2Name": "Grizzbolt"
-  },
-  {
-    "ResultIndex": "64",
-    "ResultName": "Dinossom Lux",
-    "Parent1Index": "64",
-    "Parent1Name": "Dinossom",
-    "Parent1Index2": "60",
-    "Parent2Name": "Rayhound"
-  },
-  {
-    "ResultIndex": "12",
-    "ResultName": "Jolthog Cryst",
-    "Parent1Index": "12",
-    "Parent1Name": "Jolthog",
-    "Parent1Index2": "10",
-    "Parent2Name": "Pengullet"
-  },
-  {
-    "ResultIndex": "110",
-    "ResultName": "Frostallion Noct",
-    "Parent1Index": "110",
-    "Parent1Name": "Frostallion",
-    "Parent1Index2": "97",
-    "Parent2Name": "Helzephyr"
-  },
-  {
-    "ResultIndex": "89",
-    "ResultName": "Ice Kingpaca",
-    "Parent1Index": "89",
-    "Parent1Name": "Kingpaca",
-    "Parent1Index2": "59",
-    "Parent2Name": "Reindrix"
-  },
-  {
-    "ResultIndex": "104",
-    "ResultName": "Lyleen Noct",
-    "Parent1Index": "104",
-    "Parent1Name": "Lyleen",
-    "Parent1Index2": "99",
-    "Parent2Name": "Menasting"
-  },
-  {
-    "ResultIndex": "45",
-    "ResultName": "Leezpunk Ignis",
-    "Parent1Index": "45",
-    "Parent1Name": "Leezpunk",
-    "Parent1Index2": "70",
-    "Parent2Name": "Flambelle"
-  },
-  {
-    "ResultIndex": "84",
-    "ResultName": "Blazehowl Noct",
-    "Parent1Index": "84",
-    "Parent1Name": "Blazehowl",
-    "Parent1Index2": "94",
-    "Parent2Name": "Felbat"
-  },
-  {
-    "ResultIndex": "48",
-    "ResultName": "Robinquill Terra",
-    "Parent1Index": "48",
-    "Parent1Name": "Robinquill",
-    "Parent1Index2": "22",
-    "Parent2Name": "Fuddler"
-  },
-  {
-    "ResultIndex": "86",
-    "ResultName": "Broncherry Aqua",
-    "Parent1Index": "86",
-    "Parent1Name": "Broncherry",
-    "Parent1Index2": "6",
-    "Parent2Name": "Fuack"
-  },
-  {
-    "ResultIndex": "65",
-    "ResultName": "Surfent Terra",
-    "Parent1Index": "65",
-    "Parent1Name": "Surfent",
-    "Parent1Index2": "43",
-    "Parent2Name": "Dumud"
-  },
-  {
-    "ResultIndex": "31",
-    "ResultName": "Gobfin Ignis",
-    "Parent1Index": "31",
-    "Parent1Name": "Gobfin",
-    "Parent1Index2": "9",
-    "Parent2Name": "Rooby"
-  },
-  {
-    "ResultIndex": "102",
-    "ResultName": "Suzaku Aqua",
-    "Parent1Index": "102",
-    "Parent1Name": "Suzaku",
-    "Parent1Index2": "101",
-    "Parent2Name": "Jormuntide"
-  },
-  {
-    "ResultIndex": "88",
-    "ResultName": "Ice Reptyro",
-    "Parent1Index": "88",
-    "Parent1Name": "Reptyro",
-    "Parent1Index2": "57",
-    "Parent2Name": "Foxcicle"
-  },
-  {
-    "ResultIndex": "32",
-    "ResultName": "Hangyu Cryst",
-    "Parent1Index": "32",
-    "Parent1Name": "Hangyu",
-    "Parent1Index2": "53",
-    "Parent2Name": "Swee"
-  },
-  {
-    "ResultIndex": "104",
-    "ResultName": "Lyleen",
-    "Parent1Index": "33",
-    "Parent1Name": "Mossanda",
-    "Parent1Index2": "87",
-    "Parent2Name": "Petallia"
-  },
-  {
-    "ResultIndex": "105",
-    "ResultName": "Faleris",
-    "Parent1Index": "71",
-    "Parent1Name": "Vanwyrm",
-    "Parent1Index2": "100",
-    "Parent2Name": "Anubis"
-  },
-  {
-    "ResultIndex": "103",
-    "ResultName": "Grizzbolt",
-    "Parent1Index": "33",
-    "Parent1Name": "Mossanda",
-    "Parent1Index2": "60",
-    "Parent2Name": "Rayhound"
-  },
-  {
-    "ResultIndex": "106",
-    "ResultName": "Orserk",
-    "Parent1Index": "103",
-    "Parent1Name": "Grizzbolt",
-    "Parent1Index2": "85",
-    "Parent2Name": "Relaxaurus"
-  },
-  {
-    "ResultIndex": "107",
-    "ResultName": "Shadowbeak",
-    "Parent1Index": "61",
-    "Parent1Name": "Kitsun",
-    "Parent1Index2": "98",
-    "Parent2Name": "Astegon"
-  }
+  {"ResultIndex": "85", "ResultName": "Relaxaurus Lux", "Parent1Index": "85", "Parent1Name": "Relaxaurus", "Parent1Index2": "7", "Parent2Name": "Sparkit"},
+  {"ResultIndex": "40", "ResultName": "Incineram Noct", "Parent1Index": "40", "Parent1Name": "Incineram", "Parent1Index2": "66", "Parent2Name": "Maraith"},
+  {"ResultIndex": "24", "ResultName": "Mau Cryst", "Parent1Index": "24", "Parent1Name": "Mau", "Parent1Index2": "10", "Parent2Name": "Pengullet"},
+  {"ResultIndex": "71", "ResultName": "Vanwyrm Cryst", "Parent1Index": "71", "Parent1Name": "Vanwyrm", "Parent1Index2": "57", "Parent2Name": "Foxcicle"},
+  {"ResultIndex": "37", "ResultName": "Eikthyrdeer Terra", "Parent1Index": "37", "Parent1Name": "Eikthyrdeer", "Parent1Index2": "32", "Parent2Name": "Hangyu"},
+  {"ResultIndex": "80", "ResultName": "Elphidran Aqua", "Parent1Index": "80", "Parent1Name": "Elphidran", "Parent1Index2": "65", "Parent2Name": "Surfent"},
+  {"ResultIndex": "58", "ResultName": "Pyrin Noct", "Parent1Index": "58", "Parent1Name": "Pyrin", "Parent1Index2": "75", "Parent2Name": "Katress"},
+  {"ResultIndex": "90", "ResultName": "Mammorest Cryst", "Parent1Index": "90", "Parent1Name": "Mammorest", "Parent1Index2": "91", "Parent2Name": "Wumpo"},
+  {"ResultIndex": "33", "ResultName": "Mossanda Lux", "Parent1Index": "33", "Parent1Name": "Mossanda", "Parent1Index2": "103", "Parent2Name": "Grizzbolt"},
+  {"ResultIndex": "64", "ResultName": "Dinossom Lux", "Parent1Index": "64", "Parent1Name": "Dinossom", "Parent1Index2": "60", "Parent2Name": "Rayhound"},
+  {"ResultIndex": "12", "ResultName": "Jolthog Cryst", "Parent1Index": "12", "Parent1Name": "Jolthog", "Parent1Index2": "10", "Parent2Name": "Pengullet"},
+  {"ResultIndex": "110", "ResultName": "Frostallion Noct", "Parent1Index": "110", "Parent1Name": "Frostallion", "Parent1Index2": "97", "Parent2Name": "Helzephyr"},
+  {"ResultIndex": "89", "ResultName": "Ice Kingpaca", "Parent1Index": "89", "Parent1Name": "Kingpaca", "Parent1Index2": "59", "Parent2Name": "Reindrix"},
+  {"ResultIndex": "104", "ResultName": "Lyleen Noct", "Parent1Index": "104", "Parent1Name": "Lyleen", "Parent1Index2": "99", "Parent2Name": "Menasting"},
+  {"ResultIndex": "45", "ResultName": "Leezpunk Ignis", "Parent1Index": "45", "Parent1Name": "Leezpunk", "Parent1Index2": "70", "Parent2Name": "Flambelle"},
+  {"ResultIndex": "84", "ResultName": "Blazehowl Noct", "Parent1Index": "84", "Parent1Name": "Blazehowl", "Parent1Index2": "94", "Parent2Name": "Felbat"},
+  {"ResultIndex": "48", "ResultName": "Robinquill Terra", "Parent1Index": "48", "Parent1Name": "Robinquill", "Parent1Index2": "22", "Parent2Name": "Fuddler"},
+  {"ResultIndex": "86", "ResultName": "Broncherry Aqua", "Parent1Index": "86", "Parent1Name": "Broncherry", "Parent1Index2": "6", "Parent2Name": "Fuack"},
+  {"ResultIndex": "65", "ResultName": "Surfent Terra", "Parent1Index": "65", "Parent1Name": "Surfent", "Parent1Index2": "43", "Parent2Name": "Dumud"},
+  {"ResultIndex": "31", "ResultName": "Gobfin Ignis", "Parent1Index": "31", "Parent1Name": "Gobfin", "Parent1Index2": "9", "Parent2Name": "Rooby"},
+  {"ResultIndex": "102", "ResultName": "Suzaku Aqua", "Parent1Index": "102", "Parent1Name": "Suzaku", "Parent1Index2": "101", "Parent2Name": "Jormuntide"},
+  {"ResultIndex": "88", "ResultName": "Ice Reptyro", "Parent1Index": "88", "Parent1Name": "Reptyro", "Parent1Index2": "57", "Parent2Name": "Foxcicle"},
+  {"ResultIndex": "32", "ResultName": "Hangyu Cryst", "Parent1Index": "32", "Parent1Name": "Hangyu", "Parent1Index2": "53", "Parent2Name": "Swee"},
+  {"ResultIndex": "104", "ResultName": "Lyleen", "Parent1Index": "33", "Parent1Name": "Mossanda", "Parent1Index2": "87", "Parent2Name": "Petallia"},
+  {"ResultIndex": "105", "ResultName": "Faleris", "Parent1Index": "71", "Parent1Name": "Vanwyrm", "Parent1Index2": "100", "Parent2Name": "Anubis"},
+  {"ResultIndex": "103", "ResultName": "Grizzbolt", "Parent1Index": "33", "Parent1Name": "Mossanda", "Parent1Index2": "60", "Parent2Name": "Rayhound"},
+  {"ResultIndex": "106", "ResultName": "Orserk", "Parent1Index": "103", "Parent1Name": "Grizzbolt", "Parent1Index2": "85", "Parent2Name": "Relaxaurus"},
+  {"ResultIndex": "107", "ResultName": "Shadowbeak", "Parent1Index": "61", "Parent1Name": "Kitsun", "Parent1Index2": "98", "Parent2Name": "Astegon"}
 ]
