@@ -110,7 +110,7 @@ const PathwayFinder = () => {
           />
           <ui.ButtonGroup>
             <ui.Button type="reset" variant="secondary">
-              Reset
+              {t('reset')}
             </ui.Button>
           </ui.ButtonGroup>
         </ui.Flex>

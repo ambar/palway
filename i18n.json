@@ -11,5 +11,9 @@
     "zh-Hans": "结果",
     "en": "Child"
   },
+  "reset": {
+    "zh-Hans": "重置",
+    "en": "Reset"
+  },
   "//": "comment"
 }
