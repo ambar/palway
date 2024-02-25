@@ -25,9 +25,9 @@
   :root[class*="dark"] & {
     fill: #183636;
   }
-  @media (prefers-color-scheme: dark) {
+  /* @media (prefers-color-scheme: dark) {
     fill: #183636;
-  }
+  } */
 }
 
 .graph .node polygon {
