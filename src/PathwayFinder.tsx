@@ -58,7 +58,7 @@ const PathwayFinder = () => {
           setGraph('')
         }}
         UNSAFE_style={{
-          margin: 'auto 1em',
+          margin: 'auto',
         }}
       >
         <ui.Flex
@@ -115,7 +115,7 @@ const PathwayFinder = () => {
           </ui.ButtonGroup>
         </ui.Flex>
       </ui.Form>
-      <ui.View margin="size-100">
+      <ui.View marginY="1em">
         <FlowGraph text={graph} />
       </ui.View>
     </ui.View>
