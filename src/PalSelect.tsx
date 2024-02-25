@@ -22,7 +22,6 @@ export const PalSelect = (
       pal,
     }))
   }, [t])
-  console.info('options', options)
 
   return (
     <ui.Flex direction="row" gap="size-100" wrap>

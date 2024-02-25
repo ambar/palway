@@ -1,7 +1,7 @@
 import {combineParent} from './breed'
 import {normalPals, type Pal} from './pals'
 import type {PalName} from './palNames'
-import combos from '../data/combos.json'
+// import combos from '../data/combos.json'
 
 type CombosMap = Map<PalName, Map<PalName, PalName | null>>
 
@@ -32,8 +32,6 @@ export const getAllCombosMap = (dedupe = false) => {
   return map
 }
 
-console.time('getMap')
-
 export const dedupedCombosMap: CombosMap = getAllCombosMap(true)
 // reverse map
 export const combosMapByChildName = new Map<PalName, [PalName, PalName][]>()
@@ -56,8 +54,6 @@ for (const [a, bMap] of dedupedCombosMap) {
     combosMapByChildName.get(c)!.push([a, b])
   }
 }
-
-console.timeEnd('getMap')
 
 // export const dedupedCombosMap: CombosMap = new Map()
 // // non-deduped map
