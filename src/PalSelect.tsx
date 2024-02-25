@@ -2,6 +2,8 @@ import * as ui from '@adobe/react-spectrum'
 // import {useTreeData} from 'react-stately'
 import {normalPals, type Pal} from './lib/pals'
 import getPalIcon from './lib/getPalIcon'
+import {useMemo} from 'react'
+import useI18n from './lib/useI18n'
 
 type PalSelectOptionItem = {
   id: string
@@ -9,18 +11,19 @@ type PalSelectOptionItem = {
   pal: Pal
 }
 
-const getPalSelectOptionName = (pal: Pal) => `${pal.pal_name} #${pal.pal_index}`
-
-// index/name is added to the options to make it easier to find the selected item
-const options = normalPals.map(pal => ({
-  id: pal.pal_name,
-  name: getPalSelectOptionName(pal),
-  pal,
-}))
-
 export const PalSelect = (
   props: Omit<ui.SpectrumComboBoxProps<PalSelectOptionItem>, 'children'>,
 ) => {
+  const t = useI18n()
+  const options = useMemo(() => {
+    return normalPals.map(pal => ({
+      id: pal.pal_name,
+      name: `${t(`palName_${pal.pal_dev_name}`)} #${pal.pal_index}`,
+      pal,
+    }))
+  }, [t])
+  console.info('options', options)
+
   return (
     <ui.Flex direction="row" gap="size-100" wrap>
       <ui.ComboBox
@@ -53,7 +56,7 @@ export const PalSelect = (
           return (
             <ui.Item key={item.id} textValue={item.name}>
               <ui.Text slot="icon">{icon}</ui.Text>
-              <ui.Text>{item.pal.pal_name}</ui.Text>
+              <ui.Text>{t(`palName_${item.pal.pal_dev_name}`)}</ui.Text>
               <ui.Text
                 slot="description"
                 UNSAFE_style={{fontSize: '.85em', opacity: 0.7}}

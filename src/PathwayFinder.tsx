@@ -17,7 +17,6 @@ const PathwayFinder = () => {
   const [parent1, setParent1] = useState<SelectedKey>()
   const [parent2, setParent2] = useState<SelectedKey>()
   const [child, setChild] = useState<SelectedKey>()
-
   const [graph, setGraph] = useState('')
 
   useEffect(() => {
@@ -28,13 +27,13 @@ const PathwayFinder = () => {
         return
       }
       setChild(childName)
-      setGraph(makeGraph([[parent1, parent2]], childName))
+      setGraph(makeGraph([[parent1, parent2]], childName, t))
       return
     }
 
     if (child && !parent1 && !parent2) {
       const parents = findReverseParents(child)
-      setGraph(makeGraph(parents, child))
+      setGraph(makeGraph(parents, child, t))
       return
     }
 
@@ -42,10 +41,10 @@ const PathwayFinder = () => {
     if (child && parent) {
       const parents = findReverseParents(child, p => p.includes(parent))
       console.info({parents, child})
-      setGraph(makeGraph(parents, child))
+      setGraph(makeGraph(parents, child, t))
       return
     }
-  }, [parent1, parent2, child])
+  }, [parent1, parent2, child, t])
 
   return (
     <ui.View>

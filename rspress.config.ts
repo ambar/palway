@@ -28,8 +28,40 @@ export default defineConfig({
       label: 'English',
     },
     {
+      lang: 'de',
+      label: 'Deutsch',
+    },
+    {
+      lang: 'es',
+      label: 'Español',
+    },
+    {
+      lang: 'fr',
+      label: 'Français',
+    },
+    {
+      lang: 'it',
+      label: 'Italiano',
+    },
+    {
+      lang: 'ko',
+      label: '한국어',
+    },
+    {
+      lang: 'pt-BR',
+      label: 'Português',
+    },
+    {
+      lang: 'ru',
+      label: 'Русский',
+    },
+    {
       lang: 'zh-Hans',
       label: '简体中文',
+    },
+    {
+      lang: 'zh-Hant',
+      label: '繁體中文',
     },
   ],
 })

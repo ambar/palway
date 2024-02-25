@@ -18,10 +18,18 @@ export const init = async () => {
 }
 
 // https://graphviz.org/docs/graph/
-export const makeGraph = (parents: [PalName, PalName][], child: PalName) => {
+export const makeGraph = (
+  parents: [PalName, PalName][],
+  child: PalName,
+  i18n,
+) => {
   const attr = (palName: PalName) => {
     const src = getPalIcon(normalPalsByName[palName].pal_dev_name)
-    return String.raw`image="${src}", labelloc=b, label="${palName}"`
+    return String.raw`image="${src}", labelloc=b, label="${name(palName)}"`
+  }
+  const name = (palName: PalName) => {
+    const pal = normalPalsByName[palName]
+    return i18n(`palName_${pal.pal_dev_name}`)
   }
   if (!parents?.length) {
     return ''
