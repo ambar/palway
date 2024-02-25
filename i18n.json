@@ -1,0 +1,15 @@
+{
+  "parent1": {
+    "zh-Hans": "父母 1",
+    "en": "Parent 1"
+  },
+  "parent2": {
+    "zh-Hans": "父母 2",
+    "en": "Parent 2"
+  },
+  "child": {
+    "zh-Hans": "结果",
+    "en": "Child"
+  },
+  "//": "comment"
+}

@@ -5,6 +5,7 @@ import {PalSelect} from './PalSelect'
 import {PalName} from './lib/palNames'
 import {findReverseParents, getCombo} from './lib/combos'
 import {FlowGraph, makeGraph} from './dot'
+import useI18n from './lib/useI18n'
 
 type SelectedKey = PalName
 
@@ -12,6 +13,7 @@ type SelectedKey = PalName
  * Breading calculator for Palworld
  */
 const PathwayFinder = () => {
+  const t = useI18n()
   const [parent1, setParent1] = useState<SelectedKey>()
   const [parent2, setParent2] = useState<SelectedKey>()
   const [child, setChild] = useState<SelectedKey>()
@@ -67,7 +69,7 @@ const PathwayFinder = () => {
           wrap
         >
           <PalSelect
-            label="Parent A:"
+            label={t('parent1')}
             selectedKey={parent1}
             onInputChange={v => {
               if (!v) {
@@ -80,7 +82,7 @@ const PathwayFinder = () => {
           />
           {/* <Add /> */}
           <PalSelect
-            label="Parent B:"
+            label={t('parent2')}
             selectedKey={parent2}
             onInputChange={v => {
               if (!v) {
@@ -93,7 +95,7 @@ const PathwayFinder = () => {
           />
           {/* <ChevronRight /> */}
           <PalSelect
-            label="Child:"
+            label={t('child')}
             selectedKey={child}
             onSelectionChange={key => {
               console.info('child', key)

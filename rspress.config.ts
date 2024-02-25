@@ -20,4 +20,16 @@ export default defineConfig({
       },
     ],
   },
+  lang: 'en',
+  // The label in nav bar to switch language
+  locales: [
+    {
+      lang: 'en',
+      label: 'English',
+    },
+    {
+      lang: 'zh-Hans',
+      label: '简体中文',
+    },
+  ],
 })
