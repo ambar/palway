@@ -41,6 +41,7 @@
 
 .graph .edge polygon {
   fill: currentColor;
+  stroke: none;
   /* filter: invert(1); */
 }
 
