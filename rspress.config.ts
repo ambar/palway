@@ -3,6 +3,10 @@ import {defineConfig} from 'rspress/config'
 export default defineConfig({
   root: 'press',
   title: 'Palway',
+  icon: '/favicon.svg',
+  route: {
+    cleanUrls: true,
+  },
   themeConfig: {
     search: false,
     // nav: [
