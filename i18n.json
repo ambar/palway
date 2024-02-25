@@ -8,7 +8,7 @@
     "en": "Parent 2"
   },
   "child": {
-    "zh-Hans": "结果",
+    "zh-Hans": "后代",
     "en": "Child"
   },
   "reset": {
