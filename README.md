@@ -2,6 +2,8 @@
 
 Breading calculator for Palworld.
 
+![screenshot](./meta/screenshot-1.jpg)
+
 ## Develop
 
 ```sh
