@@ -1,5 +1,5 @@
 import {Content, Provider, defaultTheme} from '@adobe/react-spectrum'
-import {useDark} from 'rspress/runtime'
+import {useDark, NoSSR} from 'rspress/runtime'
 import PathwayFinder from './PathwayFinder'
 import './index.css'
 
@@ -18,7 +18,10 @@ function App() {
       }}
     >
       <Content marginY="2em">
-        <PathwayFinder />
+        {/* TODO: react-spectrum FOUC; rspress dark true->false->true */}
+        <NoSSR>
+          <PathwayFinder />
+        </NoSSR>
       </Content>
     </Provider>
   )
