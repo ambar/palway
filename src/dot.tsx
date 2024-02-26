@@ -77,7 +77,6 @@ export const FlowGraph = ({text}: {text: string}) => {
         return
       }
       const viz = await init()
-      console.info(text)
       if (!text) {
         ref.current.textContent = ''
         return

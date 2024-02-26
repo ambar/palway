@@ -40,7 +40,6 @@ const PathwayFinder = () => {
     const parent = parent1 || parent2
     if (child && parent) {
       const parents = findReverseParents(child, p => p.includes(parent))
-      console.info({parents, child})
       setGraph(makeGraph(parents, child, t))
       return
     }
@@ -97,7 +96,6 @@ const PathwayFinder = () => {
             label={t('child')}
             selectedKey={child}
             onSelectionChange={key => {
-              console.info('child', key)
               // TODO: add free combo option
               if (parent1 && parent2) {
                 setParent2('')
