@@ -12,3 +12,13 @@ html, body,
   min-height: 100vh;
   height: fit-content;
 } */
+
+/* fix react-spectrum/ComboBox Menu not showing when virtual keyboard is opened on Mobile Safari
+- underlay
+- [class*=tray-wrapper][--spectrum-visual-viewport-height: 740px;]
+  - [data-testid="tray"]: height: calc(var(--spectrum-visual-viewport-height)  - var(--spectrum-tray-margin-top));
+    - [role="dialog"]: height: 100% (not working)
+*/
+div[data-testid="tray"] div[role="dialog"] {
+  height: calc(var(--spectrum-visual-viewport-height)  - var(--spectrum-tray-margin-top));
+}
