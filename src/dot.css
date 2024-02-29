@@ -45,9 +45,18 @@
   /* filter: invert(1); */
 }
 
-.graph .edge path {
-  stroke-dasharray: 5,2;
-  animation: fx-dot-dash 1s linear infinite reverse;
+svg {
+  container-type: size;
+}
+/* NOTE
+- SVG animation performance is bad on Safari, especially with large graphs
+- Safari does not support IntersectionObserver on SVG elements
+*/
+@container (height < 3200px) {
+  .graph .edge path {
+    stroke-dasharray: 5,2;
+    animation: fx-dot-dash 1s linear infinite reverse;
+  }
 }
 
 @keyframes fx-dot-dash {
