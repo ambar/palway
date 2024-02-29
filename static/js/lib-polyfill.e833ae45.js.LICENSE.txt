@@ -42,6 +42,8 @@
 
 /*! ../internals/set-iterate */
 
+/*! ./iterableToArray.js */
+
 /*! ../internals/a-map */
 
 /*! ../internals/function-call */
@@ -69,10 +71,6 @@
 /*! ../internals/function-bind-context */
 
 /*! ../internals/async-iterator-iteration */
-
-/*! ./setPrototypeOf.js */
-
-/*! ./arrayLikeToArray.js */
 
 /*! ../internals/is-object */
 
@@ -150,8 +148,6 @@
 
 /*! ../internals/to-length */
 
-/*! ./typeof.js */
-
 /*! ../internals/function-uncurry-this */
 
 /*! ../internals/export */
@@ -166,6 +162,8 @@
 
 /*! ../internals/function-call */
 
+/*! ./_class_extract_field_descriptor.js */
+
 /*! ../internals/set-iterate */
 
 /*! ../internals/get-method */
@@ -177,8 +175,6 @@
 /*! ../internals/classof-raw */
 
 /*! ../internals/set-symmetric-difference */
-
-/*! ./objectWithoutPropertiesLoose.js */
 
 /*! ../internals/set-helpers */
 
@@ -193,8 +189,6 @@
 /*! ../internals/set-helpers */
 
 /*! ../internals/object-keys */
-
-/*! ./toPrimitive.js */
 
 /*! ../internals/function-bind-context */
 
@@ -230,6 +224,8 @@
 
 /*! ../internals/function-bind-context */
 
+/*! ./_class_apply_descriptor_set.js */
+
 /*! ../internals/create-iter-result-object */
 
 /*! ../internals/set-helpers */
@@ -264,9 +260,13 @@
 
 /*! ../internals/export */
 
+/*! ./toPropertyKey.js */
+
 /*! ../internals/object-property-is-enumerable */
 
 /*! ../internals/async-iterator-create-proxy */
+
+/*! ./nonIterableSpread.js */
 
 /*! ../internals/is-object */
 
@@ -279,6 +279,8 @@
 /*! ../internals/iterator-create-proxy */
 
 /*! ../internals/export */
+
+/*! ./arrayLikeToArray.js */
 
 /*! ../internals/use-symbol-as-uid */
 
@@ -330,17 +332,15 @@
 
 /*! ../internals/export */
 
-/*! ../internals/export */
+/*! ../internals/set-method-accept-set-like */
 
-/*! ../internals/to-set-like */
+/*! ../internals/export */
 
 /*! ../internals/iterate-simple */
 
 /*! ../internals/is-pure */
 
 /*! ../internals/create-non-enumerable-property */
-
-/*! ../internals/set-method-accept-set-like */
 
 /*! ../internals/map-iterate */
 
@@ -357,6 +357,8 @@
 /*! ../internals/async-iterator-close */
 
 /*! ../internals/set-is-subset-of */
+
+/*! ../internals/to-set-like */
 
 /*! ../internals/define-built-in-accessor */
 
@@ -458,6 +460,8 @@
 
 /*! ../internals/function-bind-context */
 
+/*! ./objectWithoutPropertiesLoose.js */
+
 /*! ../internals/fails */
 
 /*! ../internals/create-non-enumerable-property */
@@ -465,8 +469,6 @@
 /*! ../internals/map-helpers */
 
 /*! ../internals/iterate */
-
-/*! ./arrayWithoutHoles.js */
 
 /*! ../internals/define-built-in */
 
@@ -490,8 +492,6 @@
 
 /*! ../internals/descriptors */
 
-/*! ./typeof.js */
-
 /*! ../internals/function-uncurry-this */
 
 /*! ../internals/has-own-property */
@@ -499,6 +499,8 @@
 /*! ../internals/array-includes */
 
 /*! ../internals/is-callable */
+
+/*! ./_class_extract_field_descriptor.js */
 
 /*! ../internals/is-callable */
 
@@ -590,9 +592,9 @@
 
 /*! ../internals/set-is-superset-of */
 
-/*! ../internals/ie8-dom-define */
-
 /*! ../internals/function-uncurry-this */
+
+/*! ../internals/ie8-dom-define */
 
 /*! ../internals/descriptors */
 
@@ -614,7 +616,7 @@
 
 /*! ../internals/set-is-superset-of */
 
-/*! ./_check_private_redeclaration.js */
+/*! ./unsupportedIterableToArray.js */
 
 /*! ../internals/a-set */
 
@@ -633,8 +635,6 @@
 /*! ../internals/map-helpers */
 
 /*! ../internals/to-set-like */
-
-/*! ./_class_apply_descriptor_get.js */
 
 /*! ../internals/get-iterator-direct */
 
@@ -704,29 +704,29 @@
 
 /*! ../internals/an-object */
 
-/*! ../internals/a-map */
+/*! ../internals/function-bind-context */
 
 /*! ../internals/is-callable */
 
 /*! ../internals/call-with-safe-iteration-closing */
 
-/*! ../internals/to-set-like */
-
-/*! ../internals/set-is-subset-of */
+/*! ../internals/a-map */
 
 /*! ../internals/function-call */
 
-/*! ../internals/function-bind-context */
+/*! ../internals/to-set-like */
 
 /*! ../internals/is-object */
 
 /*! ../internals/length-of-array-like */
 
+/*! ../internals/set-is-subset-of */
+
 /*! ../internals/function-uncurry-this */
 
 /*! ../internals/function-call */
 
-/*! ./iterableToArray.js */
+/*! ../internals/export */
 
 /*! ../internals/function-bind-native */
 
@@ -742,7 +742,7 @@
 
 /*! ../internals/object-get-own-property-descriptor */
 
-/*! ../internals/export */
+/*! ./arrayLikeToArray.js */
 
 /*! ../internals/function-bind-native */
 
@@ -810,9 +810,13 @@
 
 /*! ../internals/set-symmetric-difference */
 
+/*! ./setPrototypeOf.js */
+
 /*! ../internals/fails */
 
 /*! ../internals/map-iterate */
+
+/*! ./typeof.js */
 
 /*! ../internals/well-known-symbol */
 
@@ -821,6 +825,8 @@
 /*! ../internals/map-helpers */
 
 /*! ../internals/function-bind-context */
+
+/*! ./toPrimitive.js */
 
 /*! ../internals/function-uncurry-this */
 
@@ -870,8 +876,6 @@
 
 /*! ../internals/fails */
 
-/*! ./_class_extract_field_descriptor.js */
-
 /*! ../internals/proxy-accessor */
 
 /*! ../internals/export */
@@ -879,8 +883,6 @@
 /*! ../internals/v8-prototype-define-bug */
 
 /*! ../internals/an-object */
-
-/*! ./toPropertyKey.js */
 
 /*! ../internals/a-map */
 
@@ -944,11 +946,9 @@
 
 /*! ../internals/get-built-in */
 
-/*! ./_class_apply_descriptor_set.js */
+/*! ../internals/map-helpers */
 
 /*! ../internals/function-uncurry-this */
-
-/*! ../internals/map-helpers */
 
 /*! ../internals/set-iterate */
 
@@ -977,8 +977,6 @@
 /*! ../internals/export */
 
 /*! ../internals/set-method-accept-set-like */
-
-/*! ./nonIterableSpread.js */
 
 /*! ../internals/is-callable */
 
@@ -1036,19 +1034,19 @@
 
 /*! ../internals/export */
 
+/*! ../internals/a-set */
+
 /*! ../internals/is-callable */
 
 /*! ../internals/function-uncurry-this */
-
-/*! ../internals/a-set */
 
 /*! ../internals/create-non-enumerable-property */
 
 /*! ../internals/a-callable */
 
-/*! ../internals/is-pure */
+/*! ./arrayWithoutHoles.js */
 
-/*! ./arrayLikeToArray.js */
+/*! ../internals/is-pure */
 
 /*! ../internals/export */
 
@@ -1099,6 +1097,8 @@
 /*! ../internals/iterate */
 
 /*! ../internals/a-map */
+
+/*! ./typeof.js */
 
 /*! ../internals/descriptors */
 
@@ -1164,6 +1164,8 @@
 
 /*! ../internals/use-symbol-as-uid */
 
+/*! ./_class_apply_descriptor_get.js */
+
 /*! ../internals/get-method */
 
 /*! ../internals/descriptors */
@@ -1192,6 +1194,8 @@
 
 /*! ../internals/enum-bug-keys */
 
+/*! ./_check_private_redeclaration.js */
+
 /*! ../internals/export */
 
 /*! ../internals/uid */
@@ -1201,8 +1205,6 @@
 /*! ../internals/set-size */
 
 /*! ../internals/object-define-properties */
-
-/*! ./_class_extract_field_descriptor.js */
 
 /*! ../internals/validate-arguments-length */
 
@@ -1223,8 +1225,6 @@
 /*! ../internals/define-built-ins */
 
 /*! ../internals/export */
-
-/*! ./unsupportedIterableToArray.js */
 
 /*! ../internals/a-map */
 
