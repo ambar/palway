@@ -40,7 +40,7 @@ export const makeGraph = (
   // fontsize=12
   // fontname="Helvetica,Arial,sans-serif"
   return String.raw`
-digraph Palwal {
+digraph Palway {
   node [fontname="Helvetica,Arial,sans-serif",style=dashed]
   edge [fontname="Helvetica,Arial,sans-serif",style=dashed,arrowsize=.9,arrowhead=empty]
   rankdir=LR;
