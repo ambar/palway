@@ -60,17 +60,17 @@
 
 /*! ./T_DarkCrow_icon_normal.png */
 
-/*! core-js/modules/esnext.set.is-disjoint-from.v2.js */
-
 /*! core-js/modules/esnext.set.is-subset-of.js */
 
 /*! ../data/uniqueCombos.json */
 
-/*! core-js/modules/esnext.iterator.reduce.js */
+/*! core-js/modules/esnext.set.is-disjoint-from.v2.js */
 
 /*! ./T_FairyDragon_icon_normal.png */
 
 /*! core-js/modules/esnext.async-iterator.filter.js */
+
+/*! core-js/modules/esnext.iterator.reduce.js */
 
 /*! ./lib/getPalIcon */
 
@@ -212,9 +212,9 @@
 
 /*! ./T_BlueDragon_icon_normal.png */
 
-/*! ./T_Serpent_Ground_icon_normal.png */
-
 /*! ./T_CatVampire_icon_normal.png */
+
+/*! ./T_Serpent_Ground_icon_normal.png */
 
 /*! ./T_WhiteTiger_icon_normal.png */
 
@@ -260,8 +260,6 @@
 
 /*! core-js/modules/esnext.iterator.filter.js */
 
-/*! core-js/modules/esnext.async-iterator.map.js */
-
 /*! ./T_WizardOwl_icon_normal.png */
 
 /*! core-js/modules/es.array.includes.js */
@@ -301,6 +299,8 @@
 /*! ./T_ElecLion_icon_normal.png */
 
 /*! core-js/modules/esnext.map.update.js */
+
+/*! core-js/modules/esnext.async-iterator.map.js */
 
 /*! ./T_FlowerDinosaur_Electric_icon_normal.png */
 
@@ -480,9 +480,9 @@
 
 /*! core-js/modules/esnext.map.every.js */
 
-/*! core-js/modules/esnext.map.reduce.js */
-
 /*! core-js/modules/esnext.iterator.map.js */
+
+/*! core-js/modules/esnext.map.reduce.js */
 
 /*! core-js/modules/esnext.set.is-subset-of.v2.js */
 

@@ -1,3 +1,16 @@
+/**
+ * React Router DOM v6.22.2
+ *
+ * Copyright (c) Remix Software Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.md file in the root directory of this source tree.
+ *
+ * @license MIT
+ */
+
+/*! react-dom */
+
 /*! @remix-run/router */
 
 /*! react */
@@ -5,7 +18,18 @@
 /*! react */
 
 /**
- * React Router v6.22.1
+ * @remix-run/router v1.15.2
+ *
+ * Copyright (c) Remix Software Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.md file in the root directory of this source tree.
+ *
+ * @license MIT
+ */
+
+/**
+ * React Router v6.22.2
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -18,27 +42,3 @@
 /*! @remix-run/router */
 
 /*! react-router */
-
-/**
- * @remix-run/router v1.15.1
- *
- * Copyright (c) Remix Software Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.md file in the root directory of this source tree.
- *
- * @license MIT
- */
-
-/**
- * React Router DOM v6.22.1
- *
- * Copyright (c) Remix Software Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.md file in the root directory of this source tree.
- *
- * @license MIT
- */
-
-/*! react-dom */
