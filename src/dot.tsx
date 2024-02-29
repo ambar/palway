@@ -114,6 +114,7 @@ export const FlowGraph = ({text}: {text: string}) => {
   return (
     <div
       ref={ref}
+      className="viz"
       style={{
         display: 'flex',
         justifyContent: 'center',
