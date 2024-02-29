@@ -2,6 +2,7 @@ import type {Viz} from '@viz-js/viz'
 import {useEffect, useRef} from 'react'
 import {normalPalsByName} from './lib/pals'
 import getPalIcon from './lib/getPalIcon'
+import once from './lib/once'
 import type {PalName} from './lib/palNames'
 import './dot.css'
 
@@ -68,6 +69,16 @@ digraph Palway {
 `
 }
 
+const getImages = once(() => {
+  return Object.values(normalPalsByName).map(pal => {
+    return {
+      name: getPalIcon(pal.pal_dev_name),
+      width: 40,
+      height: 40,
+    }
+  })
+})
+
 export const FlowGraph = ({text}: {text: string}) => {
   const ref = useRef<HTMLDivElement>(null)
 
@@ -84,23 +95,13 @@ export const FlowGraph = ({text}: {text: string}) => {
 
       console.time('viz:render')
       const svg = viz.renderSVGElement(text, {
-        images: [
-          ...Object.values(normalPalsByName).map(pal => {
-            return {
-              name: getPalIcon(pal.pal_dev_name),
-              width: 40,
-              height: 40,
-            }
-          }),
-        ],
+        images: getImages(),
       })
       console.timeEnd('viz:render')
       // keep the top of the svg at the top of the container for mobile devices
       svg.setAttribute('preserveAspectRatio', 'xMaxYMin')
       ref.current.textContent = ''
       ref.current.append(svg)
-      // const svg = viz.renderString(text)
-      // ref.current.innerHTML = svg
     })()
 
     return () => {
