@@ -3,7 +3,7 @@ import * as ui from '@adobe/react-spectrum'
 import {normalPals, type Pal} from './lib/pals'
 import getPalIcon from './lib/getPalIcon'
 import {useMemo} from 'react'
-import useI18n from './lib/useI18n'
+// import useI18n from './lib/useI18n'
 
 type PalSelectOptionItem = {
   id: string
@@ -11,14 +11,16 @@ type PalSelectOptionItem = {
   pal: Pal
 }
 
+let t = (s: string) => s
 export const PalSelect = (
   props: Omit<ui.SpectrumComboBoxProps<PalSelectOptionItem>, 'children'>,
 ) => {
-  const t = useI18n()
+  // const t = useI18n()
   const options = useMemo(() => {
     return normalPals.map(pal => ({
       id: pal.pal_name,
-      name: `${t(`palName_${pal.pal_dev_name}`)} #${pal.pal_index}`,
+      name: pal.pal_dev_name,
+      // name: `${t(`palName_${pal.pal_dev_name}`)} #${pal.pal_index}`,
       pal,
     }))
   }, [t])

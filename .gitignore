@@ -12,6 +12,7 @@ coverage
 dist
 dist-ssr
 doc_build
+.docusaurus
 *.local
 
 # Editor directories and files
