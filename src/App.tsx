@@ -17,12 +17,10 @@ function App() {
         '--spectrum-alias-background-color-default': dark ? 'black' : 'white',
       }}
     >
-      <Content marginY="2em">
-        {/* TODO: react-spectrum FOUC; rspress dark true->false->true */}
-        <NoSSR>
-          <PathwayFinder />
-        </NoSSR>
-      </Content>
+      {/* TODO: react-spectrum FOUC; rspress dark true->false->true */}
+      <NoSSR>
+        <PathwayFinder />
+      </NoSSR>
     </Provider>
   )
 }

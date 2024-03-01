@@ -83,16 +83,19 @@ export const FlowGraph = ({text}: {text: string}) => {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (!ref.current) {
+      return
+    }
+    let unmounted = false
     void (async () => {
-      if (!ref.current) {
+      const viz = await init()
+      if (unmounted) {
         return
       }
-      const viz = await init()
       if (!text) {
         ref.current.textContent = ''
         return
       }
-
       console.time('viz:render')
       const svg = viz.renderSVGElement(text, {
         images: getImages(),
@@ -105,9 +108,8 @@ export const FlowGraph = ({text}: {text: string}) => {
     })()
 
     return () => {
-      if (ref.current) {
-        ref.current.textContent = ''
-      }
+      unmounted = true
+      ref.current.textContent = ''
     }
   }, [text])
 

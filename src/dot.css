@@ -16,19 +16,20 @@
 }
 
 .graph .node.root polygon {
-  /* 5da9a9 */
+  /* #5da9a9, #8bcccc */
   fill: #5da9a9;
   /* fill: light-dark(#8bcccc,#183636); */
-  /* @media (prefers-color-scheme: light) {
-    fill: #8bcccc;
-  } */
-  :root[class*="dark"] & {
+}
+/* Safari does not support nesting this in a media query */
+:root[class*="dark"] .graph .node.root polygon {
+  fill: #183636;
+}
+/* TODO: Why does this not work? */
+/* @media (prefers-color-scheme: dark) {
+  .graph .node.root polygon {
     fill: #183636;
   }
-  /* @media (prefers-color-scheme: dark) {
-    fill: #183636;
-  } */
-}
+} */
 
 .graph .node polygon {
   stroke: currentColor;
@@ -61,6 +62,7 @@
 
 @keyframes fx-dot-dash {
   to {
-    stroke-dashoffset: 20;
+    /* (5+2)*N */
+    stroke-dashoffset: 21;
   }
 }

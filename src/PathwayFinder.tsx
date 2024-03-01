@@ -112,7 +112,7 @@ const PathwayFinder = () => {
           </ui.ButtonGroup>
         </ui.Flex>
       </ui.Form>
-      <ui.View margin="1em">
+      <ui.View padding="1em">
         <FlowGraph text={graph} />
       </ui.View>
     </ui.View>
