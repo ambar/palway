@@ -1,7 +1,7 @@
-import {test, expect} from 'vitest'
-import type {PalName} from '../palNames'
+import {expect, test} from 'vitest'
 import staticCombos from '../../data/combos.json'
-import {getCombo, dedupedCombosMap, fullCombosMap} from '../combos'
+import {dedupedCombosMap, fullCombosMap, getCombo} from '../combos'
+import type {PalName} from '../palNames'
 
 test('sort key', () => {
   expect(getCombo('Anubis', 'Arsox')).toBe(getCombo('Arsox', 'Anubis'))

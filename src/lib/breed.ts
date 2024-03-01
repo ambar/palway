@@ -1,6 +1,6 @@
-import {normalPalsSortedByCombiRank, normalPalsByName, type Pal} from './pals'
 import uniqueCombos from '../data/uniqueCombos.json'
 import type {PalName} from './palNames'
+import {type Pal, normalPalsByName, normalPalsSortedByCombiRank} from './pals'
 import {tieBreakerOrderMap} from './tieBreaker'
 
 const uniqueCombosByChildName = uniqueCombos.reduce(

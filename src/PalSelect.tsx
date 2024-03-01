@@ -1,8 +1,8 @@
 import * as ui from '@adobe/react-spectrum'
-// import {useTreeData} from 'react-stately'
-import {normalPals, type Pal} from './lib/pals'
-import getPalIcon from './lib/getPalIcon'
 import {useMemo} from 'react'
+import getPalIcon from './lib/getPalIcon'
+// import {useTreeData} from 'react-stately'
+import {type Pal, normalPals} from './lib/pals'
 import useI18n from './lib/useI18n'
 
 type PalSelectOptionItem = {

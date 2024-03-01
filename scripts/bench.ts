@@ -1,6 +1,6 @@
 import {Bench} from 'tinybench'
-import {getAllCombosMap} from '../src/lib/combos'
 import combos from '../src/data/combos.json'
+import {getAllCombosMap} from '../src/lib/combos'
 
 const bench = new Bench({time: 200})
 

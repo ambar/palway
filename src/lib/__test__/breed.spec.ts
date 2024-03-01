@@ -1,7 +1,7 @@
-import {test, expect} from 'vitest'
+import {expect, test} from 'vitest'
 import {combineParent} from '../breed'
-import {normalPalsByName, normalPalsSortedByCombiRank} from '../pals'
 import type {PalName} from '../palNames'
+import {normalPalsByName, normalPalsSortedByCombiRank} from '../pals'
 import product from '../product'
 
 const assert = (a: PalName, b: PalName, expected: string | null) => {

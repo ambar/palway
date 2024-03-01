@@ -1,6 +1,6 @@
 import {combineParent} from './breed'
-import {normalPals, type Pal} from './pals'
 import type {PalName} from './palNames'
+import {type Pal, normalPals} from './pals'
 // import combos from '../data/combos.json'
 
 type CombosMap = Map<PalName, Map<PalName, PalName | null>>

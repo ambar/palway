@@ -1,10 +1,10 @@
 import type {Viz} from '@viz-js/viz'
 import {useEffect, useRef} from 'react'
-import {normalPalsByName} from './lib/pals'
+import './dot.css'
 import getPalIcon from './lib/getPalIcon'
 import once from './lib/once'
 import type {PalName} from './lib/palNames'
-import './dot.css'
+import {normalPalsByName} from './lib/pals'
 
 let viz: Viz
 export const init = async () => {

@@ -1,10 +1,10 @@
-import {useEffect, useState} from 'react'
 // https://spectrum.adobe.com/page/icons/
 import * as ui from '@adobe/react-spectrum'
+import {useEffect, useState} from 'react'
 import {PalSelect} from './PalSelect'
-import {PalName} from './lib/palNames'
-import {findReverseParents, getCombo} from './lib/combos'
 import {FlowGraph, makeGraph} from './dot'
+import {findReverseParents, getCombo} from './lib/combos'
+import {PalName} from './lib/palNames'
 import useI18n from './lib/useI18n'
 
 type SelectedKey = PalName
