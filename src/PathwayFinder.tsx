@@ -190,7 +190,7 @@ const PathwayFinder = () => {
             marginX="auto"
             maxWidth={1000}
             width="100%"
-            label={`Range (${result.nodes.length})`}
+            label={`${t('pathways')} (${result.nodes.length})`}
             value={result.range}
             minValue={1}
             maxValue={result.nodes.length}

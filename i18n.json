@@ -47,6 +47,18 @@
     "zh-Hans": "重置",
     "zh-Hant": "重置"
   },
+  "pathways": {
+    "en": "Pathways",
+    "de": "Pfade",
+    "es": "Vías",
+    "fr": "Voies",
+    "it": "Vie",
+    "ko": "경로",
+    "pt-BR": "Caminhos",
+    "ru": "Пути",
+    "zh-Hans": "路径",
+    "zh-Hant": "路徑"
+  },
   "//": {},
   "palName_GYM_BlackGriffon": {
     "de": "Leiter des Instituts für Genforschung Victor & Shadowbeak",
