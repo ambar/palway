@@ -2,10 +2,13 @@
 import * as ui from '@adobe/react-spectrum'
 import {useEffect, useState} from 'react'
 import {PalSelect} from './PalSelect'
-import {FlowGraph, makeGraph} from './dot'
+import DotGraph from './DotGraph'
+import {makeComboGraph} from './lib/dot/comboGraph'
+import {makeTreeGraph} from './lib/dot/treeGraph'
 import {findReverseParents, getCombo} from './lib/combos'
 import {PalName} from './lib/palNames'
 import useI18n from './lib/useI18n'
+import {createTree} from './lib/search'
 
 type SelectedKey = PalName
 
@@ -27,20 +30,34 @@ const PathwayFinder = () => {
         return
       }
       setChild(childName)
-      setGraph(makeGraph([[parent1, parent2]], childName, t))
+      setGraph(makeComboGraph([[parent1, parent2]], childName, t))
       return
     }
 
     if (child && !parent1 && !parent2) {
       const parents = findReverseParents(child)
-      setGraph(makeGraph(parents, child, t))
+      setGraph(makeComboGraph(parents, child, t))
       return
     }
 
     const parent = parent1 || parent2
     if (child && parent) {
-      const parents = findReverseParents(child, p => p.includes(parent))
-      setGraph(makeGraph(parents, child, t))
+      console.time('treeSearch')
+      const nodes = []
+      const tree = createTree(child, node => {
+        if (node.name === parent) {
+          nodes.push(node)
+          node.match = true
+        }
+      })
+      console.timeEnd('treeSearch')
+      console.time('makeTreeGraph')
+      const treeGraph = makeTreeGraph(nodes, t, parent, child)
+      console.timeEnd('makeTreeGraph')
+      console.info(tree)
+      setGraph(treeGraph)
+      // const parents = findReverseParents(child, p => p.includes(parent))
+      // setGraph(makeGraph(parents, child, t))
       return
     }
   }, [parent1, parent2, child, t])
@@ -113,7 +130,7 @@ const PathwayFinder = () => {
         </ui.Flex>
       </ui.Form>
       <ui.View padding="1em">
-        <FlowGraph text={graph} />
+        <DotGraph text={graph} />
       </ui.View>
     </ui.View>
   )
