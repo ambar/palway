@@ -46,9 +46,9 @@
 
 /*! ./isArrayLike.js */
 
-/*! ./_baseGetTag.js */
-
 /*! ./debounce.js */
+
+/*! ./_baseGetTag.js */
 
 /*! ./_mapCacheDelete.js */
 
