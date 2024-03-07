@@ -34,7 +34,7 @@ export const getAllCombosMap = (dedupe = false) => {
 
 export const dedupedCombosMap: CombosMap = getAllCombosMap(true)
 // reverse map
-export const combosMapByChildName = new Map<PalName, [PalName, PalName][]>()
+export const combosMapByChildName = new Map<PalName, PalPair[]>()
 export const fullCombosMap: CombosMap = new Map()
 
 for (const [a, bMap] of dedupedCombosMap) {
@@ -84,11 +84,11 @@ export const getCombo = (a: PalName, b: PalName): PalName | null => {
   return fullCombosMap.get(a)?.get(b) ?? null
 }
 
-type PalPair = [PalName, PalName]
+export type PalPair = [PalName, PalName]
 export const findReverseParents = (
   childName: PalName,
   filter?: (parents: PalPair) => boolean,
-): PalPair => {
+): PalPair[] => {
   let results = combosMapByChildName.get(childName)
   if (filter) {
     results = results?.filter(filter)

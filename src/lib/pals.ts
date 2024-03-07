@@ -31,13 +31,11 @@ export const normalPalsSortedByCombiRank = normalPals
   .slice()
   .sort((a, b) => a.combi_rank - b.combi_rank)
 
-export const normalPalsByName = normalPals.reduce(
-  (acc, pal) => {
-    acc[pal.pal_name as PalName] = pal
-    return acc
-  },
-  {} as Record<PalName, Pal>,
-)
+type PalsByName = Record<PalName, Pal>
+export const normalPalsByName: PalsByName = normalPals.reduce((acc, pal) => {
+  acc[pal.pal_name as PalName] = pal
+  return acc
+}, {} as PalsByName)
 
 export type Pal = (typeof pals)[0]
 export type NormalPal = (typeof pals)[0] & {
