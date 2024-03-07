@@ -1,6 +1,6 @@
 import getPalIcon from '../getPalIcon'
-import {normalPalsByName} from '../pals'
 import type {PalName} from '../palNames'
+import {normalPalsByName} from '../pals'
 
 /**
  * Create a combo graph of all possible matches for a given child

@@ -24,6 +24,9 @@
   fill: goldenrod;
   /* fill: light-dark(#8bcccc,#183636); */
 }
+.graph .node.warn polygon {
+  fill: lightsalmon;
+}
 /* Safari does not support nesting this in a media query */
 /* :root[class*="dark"] .graph .node.root polygon {
   fill: #183636;

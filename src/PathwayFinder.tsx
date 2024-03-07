@@ -1,47 +1,73 @@
 // https://spectrum.adobe.com/page/icons/
 import * as ui from '@adobe/react-spectrum'
 import {useEffect, useState} from 'react'
-import {PalSelect} from './PalSelect'
 import DotGraph from './DotGraph'
+import {PalSelect} from './PalSelect'
+import {type PalPair, findReverseParents, getCombo} from './lib/combos'
 import {makeComboGraph} from './lib/dot/comboGraph'
 import {makeTreeGraph} from './lib/dot/treeGraph'
-import {findReverseParents, getCombo} from './lib/combos'
 import {PalName} from './lib/palNames'
+import {type PalNode, type PalTree, createTree} from './lib/search'
 import useI18n from './lib/useI18n'
-import {createTree} from './lib/search'
 
-type SelectedKey = PalName
+type Result =
+  | {
+      type: 'combo'
+      combos: PalPair[]
+      child: PalName
+    }
+  | {
+      type: 'tree'
+      nodes: PalNode[]
+      tree: PalTree
+      parent: PalName
+      child: PalName
+      range: {
+        start: number
+        end: number
+      }
+    }
+
+const defaultRange = {start: 1, end: 5}
 
 /**
  * Breading calculator for Palworld
  */
 const PathwayFinder = () => {
   const t = useI18n()
-  const [parent1, setParent1] = useState<SelectedKey>()
-  const [parent2, setParent2] = useState<SelectedKey>()
-  const [child, setChild] = useState<SelectedKey>()
+  const [parent1, setParent1] = useState<PalName>()
+  const [parent2, setParent2] = useState<PalName>()
+  const [child, setChild] = useState<PalName>()
   const [graph, setGraph] = useState('')
+  const [result, setResult] = useState<Result>(null)
 
   useEffect(() => {
     if (parent1 && parent2) {
-      const childName = getCombo(parent1, parent2)
-      if (!childName) {
+      const itsChild = getCombo(parent1, parent2)
+      if (!itsChild) {
         setChild(undefined)
+        setResult(null)
         return
       }
-      setChild(childName)
-      setGraph(makeComboGraph([[parent1, parent2]], childName, t))
+      setChild(itsChild)
+      setResult({type: 'combo', combos: [[parent1, parent2]], child: itsChild})
       return
     }
 
     if (child && !parent1 && !parent2) {
       const parents = findReverseParents(child)
-      setGraph(makeComboGraph(parents, child, t))
+      setResult({type: 'combo', combos: parents, child})
       return
     }
 
     const parent = parent1 || parent2
     if (child && parent) {
+      // TODO: fix createTree for this case
+      if (parent === child) {
+        const parents = findReverseParents(child, p => p.includes(parent))
+        setResult({type: 'combo', combos: parents, child})
+        return
+      }
       console.time('treeSearch')
       const nodes = []
       const tree = createTree(child, node => {
@@ -51,16 +77,37 @@ const PathwayFinder = () => {
         }
       })
       console.timeEnd('treeSearch')
-      console.time('makeTreeGraph')
-      const treeGraph = makeTreeGraph(nodes, t, parent, child)
-      console.timeEnd('makeTreeGraph')
-      console.info(tree)
-      setGraph(treeGraph)
-      // const parents = findReverseParents(child, p => p.includes(parent))
-      // setGraph(makeGraph(parents, child, t))
+      setResult({
+        type: 'tree',
+        nodes,
+        tree,
+        parent,
+        child,
+        range: defaultRange,
+      })
+      console.info('tree', tree)
       return
     }
-  }, [parent1, parent2, child, t])
+
+    setResult(null)
+  }, [parent1, parent2, child])
+
+  useEffect(() => {
+    if (!result) {
+      setGraph(null)
+      return
+    }
+    if (result.type === 'combo') {
+      setGraph(makeComboGraph(result.combos, result.child, t))
+    } else if (result.type === 'tree') {
+      const {nodes, range, tree, parent, child} = result
+      console.time('makeTreeGraph')
+      const sliced = nodes.slice(range.start - 1, range.end)
+      const treeGraph = makeTreeGraph(sliced, tree.root, parent, child, t)
+      console.timeEnd('makeTreeGraph')
+      setGraph(treeGraph)
+    }
+  }, [result, t])
 
   return (
     <ui.View>
@@ -128,6 +175,20 @@ const PathwayFinder = () => {
             </ui.Button>
           </ui.ButtonGroup>
         </ui.Flex>
+        {result?.type === 'tree' && (
+          <ui.RangeSlider
+            marginX="auto"
+            maxWidth={1000}
+            width="100%"
+            label={`Range (${result.nodes.length})`}
+            value={result.range}
+            minValue={1}
+            maxValue={result.nodes.length}
+            onChange={range => {
+              setResult({...result, range})
+            }}
+          />
+        )}
       </ui.Form>
       <ui.View padding="1em">
         <DotGraph text={graph} />
