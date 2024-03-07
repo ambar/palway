@@ -7,7 +7,7 @@
     "start": "rspress dev",
     "build": "rspress build",
     "preview": "rspress preview",
-    "deploy": "gh-pages -d doc_build",
+    "pages": "gh-pages -d doc_build",
     "lint": "biome check .",
     "lint:fix": "biome check --apply .",
     "test": "vitest",
