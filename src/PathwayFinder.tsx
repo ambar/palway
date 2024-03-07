@@ -8,6 +8,7 @@ import {makeComboGraph} from './lib/dot/comboGraph'
 import {makeTreeGraph} from './lib/dot/treeGraph'
 import {PalName} from './lib/palNames'
 import {type PalNode, type PalTree, createTree} from './lib/search'
+import devlog from './lib/devlog'
 import useI18n from './lib/useI18n'
 
 type Result =
@@ -29,6 +30,7 @@ type Result =
     }
 
 const defaultRange = {start: 1, end: 5}
+const log = devlog('PathwayFinder')
 
 /**
  * Breading calculator for Palworld
@@ -70,11 +72,19 @@ const PathwayFinder = () => {
       }
       console.time('treeSearch')
       const nodes = []
-      const tree = createTree(child, node => {
-        if (node.name === parent) {
-          nodes.push(node)
-          node.match = true
-        }
+      const tree = createTree(child, {
+        create(node) {
+          if (node.name === parent) {
+            nodes.push(node)
+            node.match = true
+          }
+        },
+        visitOnce(node) {
+          // strict match
+          if (node.mate?.name === child) {
+            return {skip: true, unvisited: true}
+          }
+        },
       })
       console.timeEnd('treeSearch')
       setResult({
@@ -85,7 +95,6 @@ const PathwayFinder = () => {
         child,
         range: defaultRange,
       })
-      console.info('tree', tree)
       return
     }
 
@@ -105,6 +114,7 @@ const PathwayFinder = () => {
       const sliced = nodes.slice(range.start - 1, range.end)
       const treeGraph = makeTreeGraph(sliced, tree.root, parent, child, t)
       console.timeEnd('makeTreeGraph')
+      log(tree, {nodes, range})
       setGraph(treeGraph)
     }
   }, [result, t])

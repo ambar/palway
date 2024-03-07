@@ -6,6 +6,7 @@ export type PalNode = {
   match?: boolean
   child?: PalNode
   pair?: PalNodePair
+  mate?: PalNode
   parents: PalNodePair[]
 }
 
@@ -19,19 +20,29 @@ type LayerNodes = PalNodePair[]
 
 export type PalTree = ReturnType<typeof createTree>
 
+type CreateTreeVisitor = {
+  create?(node: PalNode): void
+  visitOnce?(node: PalNode): null | {
+    /** @default false */
+    skip?: boolean
+    /** @default true */
+    unvisited?: boolean
+  }
+}
+
 /**
  * - Create a tree of all possible parents for a given child
  * - The tree is a directed graph, the root is the child
  */
 export const createTree = (
   rootName: PalName,
-  callback?: (node: PalNode) => void,
+  visitor: CreateTreeVisitor = {},
 ) => {
   // prevent infinite loops
   const visited = new Set<PalName>()
   const makeNode = (name: PalName) => {
     const node: PalNode = {name, parents: []}
-    callback?.(node)
+    visitor.create?.(node)
     return node
   }
   const makeParents = (node: PalNode): PalNodePair[] => {
@@ -40,6 +51,8 @@ export const createTree = (
       const right = makeNode(b)
       left.child = node
       right.child = node
+      left.mate = right
+      right.mate = left
       const pair = {
         left,
         right,
@@ -60,9 +73,11 @@ export const createTree = (
     const neighbors: PalNodePair[] = []
     const visit = (node: PalNode) => {
       if (!visited.has(node.name)) {
-        visited.add(node.name)
-        // FIXME: filter all neighbors in the same layer
-        if (node.match) {
+        const r = visitor.visitOnce?.(node) || {}
+        if (!r.unvisited) {
+          visited.add(node.name)
+        }
+        if (r.skip || node.match) {
           return
         }
         node.parents = makeParents(node)
