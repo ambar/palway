@@ -15,15 +15,19 @@
   translate: 0 -5px;
 }
 
+.graph .node.from polygon {
+  /* lightseagreen/lightslategray */
+  fill: lightseagreen;
+}
 .graph .node.root polygon {
   /* #5da9a9, #8bcccc */
-  fill: #5da9a9;
+  fill: goldenrod;
   /* fill: light-dark(#8bcccc,#183636); */
 }
 /* Safari does not support nesting this in a media query */
-:root[class*="dark"] .graph .node.root polygon {
+/* :root[class*="dark"] .graph .node.root polygon {
   fill: #183636;
-}
+} */
 /* TODO: Why does this not work? */
 /* @media (prefers-color-scheme: dark) {
   .graph .node.root polygon {

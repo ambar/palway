@@ -18,6 +18,20 @@ export const init = async () => {
   return viz
 }
 
+// https://graphviz.org/docs/layouts/
+type Engine =
+  | 'circo'
+  | 'dot'
+  | 'fdp'
+  | 'sfdp'
+  | 'neato'
+  | 'nop'
+  | 'nop1'
+  | 'nop2'
+  | 'osage'
+  | 'patchwork'
+  | 'twopi'
+
 // https://graphviz.org/docs/graph/
 export const makeGraph = (
   parents: [PalName, PalName][],
@@ -97,7 +111,10 @@ export const FlowGraph = ({text}: {text: string}) => {
         return
       }
       console.time('viz:render')
+      // prefer dot, neato, fdp, twopi
+      const engine: Engine = 'dot'
       const svg = viz.renderSVGElement(text, {
+        engine,
         images: getImages(),
       })
       console.timeEnd('viz:render')
@@ -109,7 +126,9 @@ export const FlowGraph = ({text}: {text: string}) => {
 
     return () => {
       unmounted = true
-      ref.current.textContent = ''
+      if (ref.current) {
+        ref.current.textContent = ''
+      }
     }
   }, [text])
 

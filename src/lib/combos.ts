@@ -84,11 +84,11 @@ export const getCombo = (a: PalName, b: PalName): PalName | null => {
   return fullCombosMap.get(a)?.get(b) ?? null
 }
 
-type ParentPair = [PalName, PalName]
+type PalPair = [PalName, PalName]
 export const findReverseParents = (
   childName: PalName,
-  filter?: (parents: ParentPair) => boolean,
-): ParentPair => {
+  filter?: (parents: PalPair) => boolean,
+): PalPair => {
   let results = combosMapByChildName.get(childName)
   if (filter) {
     results = results?.filter(filter)
