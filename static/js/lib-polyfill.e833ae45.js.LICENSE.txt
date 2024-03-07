@@ -332,15 +332,17 @@
 
 /*! ../internals/export */
 
-/*! ../internals/set-method-accept-set-like */
-
 /*! ../internals/export */
+
+/*! ../internals/to-set-like */
 
 /*! ../internals/iterate-simple */
 
 /*! ../internals/is-pure */
 
 /*! ../internals/create-non-enumerable-property */
+
+/*! ../internals/set-method-accept-set-like */
 
 /*! ../internals/map-iterate */
 
@@ -357,8 +359,6 @@
 /*! ../internals/async-iterator-close */
 
 /*! ../internals/set-is-subset-of */
-
-/*! ../internals/to-set-like */
 
 /*! ../internals/define-built-in-accessor */
 
@@ -460,9 +460,9 @@
 
 /*! ../internals/function-bind-context */
 
-/*! ./objectWithoutPropertiesLoose.js */
-
 /*! ../internals/fails */
+
+/*! ./objectWithoutPropertiesLoose.js */
 
 /*! ../internals/create-non-enumerable-property */
 
@@ -592,9 +592,9 @@
 
 /*! ../internals/set-is-superset-of */
 
-/*! ../internals/function-uncurry-this */
-
 /*! ../internals/ie8-dom-define */
+
+/*! ../internals/function-uncurry-this */
 
 /*! ../internals/descriptors */
 
@@ -704,29 +704,29 @@
 
 /*! ../internals/an-object */
 
-/*! ../internals/function-bind-context */
+/*! ../internals/a-map */
 
 /*! ../internals/is-callable */
 
 /*! ../internals/call-with-safe-iteration-closing */
 
-/*! ../internals/a-map */
+/*! ../internals/to-set-like */
+
+/*! ../internals/set-is-subset-of */
 
 /*! ../internals/function-call */
 
-/*! ../internals/to-set-like */
+/*! ../internals/function-bind-context */
 
 /*! ../internals/is-object */
 
 /*! ../internals/length-of-array-like */
 
-/*! ../internals/set-is-subset-of */
-
 /*! ../internals/function-uncurry-this */
 
 /*! ../internals/function-call */
 
-/*! ../internals/export */
+/*! ./arrayLikeToArray.js */
 
 /*! ../internals/function-bind-native */
 
@@ -742,7 +742,7 @@
 
 /*! ../internals/object-get-own-property-descriptor */
 
-/*! ./arrayLikeToArray.js */
+/*! ../internals/export */
 
 /*! ../internals/function-bind-native */
 
@@ -816,8 +816,6 @@
 
 /*! ../internals/map-iterate */
 
-/*! ./typeof.js */
-
 /*! ../internals/well-known-symbol */
 
 /*! ../internals/v8-prototype-define-bug */
@@ -847,6 +845,8 @@
 /*! ../internals/create-non-enumerable-property */
 
 /*! ../internals/object-keys-internal */
+
+/*! ./typeof.js */
 
 /*! ../internals/export */
 
@@ -946,9 +946,9 @@
 
 /*! ../internals/get-built-in */
 
-/*! ../internals/map-helpers */
-
 /*! ../internals/function-uncurry-this */
+
+/*! ../internals/map-helpers */
 
 /*! ../internals/set-iterate */
 
@@ -1034,11 +1034,11 @@
 
 /*! ../internals/export */
 
-/*! ../internals/a-set */
-
 /*! ../internals/is-callable */
 
 /*! ../internals/function-uncurry-this */
+
+/*! ../internals/a-set */
 
 /*! ../internals/create-non-enumerable-property */
 
