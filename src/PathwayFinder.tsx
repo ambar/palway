@@ -4,11 +4,11 @@ import {useEffect, useState} from 'react'
 import DotGraph from './DotGraph'
 import {PalSelect} from './PalSelect'
 import {type PalPair, findReverseParents, getCombo} from './lib/combos'
+import devlog from './lib/devlog'
 import {makeComboGraph} from './lib/dot/comboGraph'
 import {makeTreeGraph} from './lib/dot/treeGraph'
 import {PalName} from './lib/palNames'
 import {type PalNode, type PalTree, createTree} from './lib/search'
-import devlog from './lib/devlog'
 import useI18n from './lib/useI18n'
 
 type Result =

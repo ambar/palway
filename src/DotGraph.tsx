@@ -1,6 +1,6 @@
 import type {Viz} from '@viz-js/viz'
 import {useEffect, useRef} from 'react'
-import './dot.css'
+import './DotGraph.css'
 import getPalIcon from './lib/getPalIcon'
 import once from './lib/once'
 import {normalPalsByName} from './lib/pals'
