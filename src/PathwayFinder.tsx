@@ -1,5 +1,6 @@
-// https://spectrum.adobe.com/page/icons/
 import * as ui from '@adobe/react-spectrum'
+import NoSearchResults from '@spectrum-icons/illustrations/NoSearchResults'
+// import {motion, AnimatePresence} from 'framer-motion'
 import {useEffect, useState} from 'react'
 import DotGraph from './DotGraph'
 import {PalSelect} from './PalSelect'
@@ -10,6 +11,11 @@ import {makeTreeGraph} from './lib/dot/treeGraph'
 import {PalName} from './lib/palNames'
 import {type PalNode, type PalTree, createTree} from './lib/search'
 import useI18n from './lib/useI18n'
+
+type Range = {
+  start: number
+  end: number
+}
 
 type Result =
   | {
@@ -23,10 +29,9 @@ type Result =
       tree: PalTree
       parent: PalName
       child: PalName
-      range: {
-        start: number
-        end: number
-      }
+      layers: Record<number, PalNode[]>
+      range: Range
+      layerRanges: {count: number; layer: number; range: Range}[]
     }
 
 const defaultRange = {start: 1, end: 5}
@@ -42,6 +47,7 @@ const PathwayFinder = () => {
   const [child, setChild] = useState<PalName>()
   const [graph, setGraph] = useState('')
   const [result, setResult] = useState<Result>(null)
+  const [rangeType, setRangeType] = useState<'Layer' | 'All'>('Layer')
 
   useEffect(() => {
     if (parent1 && parent2) {
@@ -87,6 +93,10 @@ const PathwayFinder = () => {
         },
       })
       console.timeEnd('treeSearch')
+      const layers = Object.groupBy(nodes, x => x.depth) as Record<
+        number,
+        PalNode[]
+      >
       setResult({
         type: 'tree',
         nodes,
@@ -94,6 +104,12 @@ const PathwayFinder = () => {
         parent,
         child,
         range: defaultRange,
+        layers,
+        layerRanges: Object.entries(layers).map(([n, x], i) => ({
+          count: x.length,
+          layer: Number(n),
+          range: {start: 0, end: i === 0 ? 2 : 1},
+        })),
       })
       return
     }
@@ -111,13 +127,86 @@ const PathwayFinder = () => {
     } else if (result.type === 'tree') {
       const {nodes, range, tree, parent, child} = result
       console.time('makeTreeGraph')
-      const sliced = nodes.slice(range.start - 1, range.end)
+      const sliced =
+        rangeType === 'All'
+          ? nodes.slice(range.start - 1, range.end)
+          : result.layerRanges.flatMap((x, i) => {
+              const range = x.range
+              const layer = result.layers[x.layer]
+              return layer.slice(Math.max(0, range.start - 1), range.end)
+            })
       const treeGraph = makeTreeGraph(sliced, tree.root, parent, child, t)
       console.timeEnd('makeTreeGraph')
-      log(tree, {nodes, range})
+      log(tree, {nodes, range}, sliced)
       setGraph(treeGraph)
     }
   }, [result, t])
+
+  const noResult = result?.type === 'tree' && result.nodes.length === 0
+  let searchResult: React.ReactNode = null
+  if (noResult) {
+    searchResult = (
+      <ui.IllustratedMessage marginTop="5em">
+        <NoSearchResults />
+        <ui.Heading>{t('no-matching-results')}</ui.Heading>
+        <ui.Content>{t('try-another-search')}</ui.Content>
+      </ui.IllustratedMessage>
+    )
+  } else if (result?.type === 'tree' && result.nodes.length > 0) {
+    searchResult = (
+      <ui.Flex maxWidth={1000} margin="1em auto" direction="column" gap=".5em">
+        <ui.Flex justifyContent="center">
+          <ui.RadioGroup
+            label={t('range')}
+            orientation="horizontal"
+            labelPosition="side"
+            value={rangeType}
+            onChange={rangeType => setRangeType(rangeType as string)}
+          >
+            <ui.Radio value="Layer">{t('layer')}</ui.Radio>
+            <ui.Radio value="All">{t('all')}</ui.Radio>
+          </ui.RadioGroup>
+        </ui.Flex>
+
+        <ui.Flex justifyContent="center" wrap>
+          {rangeType === 'Layer' &&
+            result.layerRanges.map((x, i) => (
+              <ui.RangeSlider
+                key={x.layer}
+                marginX="auto"
+                margin="0 1em"
+                label={`${t('layer')} ${x.layer} (${x.count})`}
+                value={x.range}
+                maxValue={x.count}
+                onChange={range => {
+                  setResult({
+                    ...result,
+                    layerRanges: result.layerRanges.map((y, j) =>
+                      i === j ? {...x, range} : y,
+                    ),
+                  })
+                }}
+              />
+            ))}
+        </ui.Flex>
+
+        {rangeType === 'All' && (
+          <ui.RangeSlider
+            marginX="auto"
+            maxWidth={1000}
+            width="100%"
+            label={`${t('pathways')} (${result.nodes.length})`}
+            value={result.range}
+            minValue={1}
+            maxValue={result.nodes.length}
+            onChange={range => {
+              setResult({...result, range})
+            }}
+          />
+        )}
+      </ui.Flex>
+    )
+  }
 
   return (
     <ui.View>
@@ -141,7 +230,7 @@ const PathwayFinder = () => {
           wrap
         >
           <PalSelect
-            label={t('parent1')}
+            label={`${t('parent')} 1`}
             selectedKey={parent1}
             onInputChange={v => {
               if (!v) {
@@ -154,7 +243,7 @@ const PathwayFinder = () => {
           />
           {/* <Add /> */}
           <PalSelect
-            label={t('parent2')}
+            label={`${t('parent')} 2`}
             selectedKey={parent2}
             onInputChange={v => {
               if (!v) {
@@ -185,24 +274,28 @@ const PathwayFinder = () => {
             </ui.Button>
           </ui.ButtonGroup>
         </ui.Flex>
-        {result?.type === 'tree' && (
-          <ui.RangeSlider
-            marginX="auto"
-            maxWidth={1000}
-            width="100%"
-            label={`${t('pathways')} (${result.nodes.length})`}
-            value={result.range}
-            minValue={1}
-            maxValue={result.nodes.length}
-            onChange={range => {
-              setResult({...result, range})
-            }}
-          />
-        )}
+        {searchResult}
+        <ui.View padding="1em">
+          <DotGraph text={graph} />
+        </ui.View>
+        {/* <AnimatePresence mode="wait">
+          {searchResult && (
+            <motion.div
+              key={noResult ? 'noResult' : 'result'}
+              initial={{opacity: 0}}
+              animate={{opacity: 1}}
+              exit={{opacity: 0}}
+              transition={{
+                duration: 0.1,
+              }}
+              style={{
+                width: '100%',
+              }}
+            >
+            </motion.div>
+          )}
+        </AnimatePresence> */}
       </ui.Form>
-      <ui.View padding="1em">
-        <DotGraph text={graph} />
-      </ui.View>
     </ui.View>
   )
 }

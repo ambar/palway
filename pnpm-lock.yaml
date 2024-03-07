@@ -8,12 +8,18 @@ dependencies:
   '@adobe/react-spectrum':
     specifier: ^3.33.1
     version: 3.33.1(react-dom@18.2.0)(react@18.2.0)
+  '@spectrum-icons/illustrations':
+    specifier: ^3.6.11
+    version: 3.6.11(@react-spectrum/provider@3.9.5)(react@18.2.0)
   '@spectrum-icons/workflow':
     specifier: ^4.2.10
     version: 4.2.10(@react-spectrum/provider@3.9.5)(react-dom@18.2.0)(react@18.2.0)
   '@viz-js/viz':
     specifier: ^3.3.0
     version: 3.3.0
+  framer-motion:
+    specifier: ^11.0.8
+    version: 11.0.8(react-dom@18.2.0)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -39,13 +45,13 @@ devDependencies:
     version: 4.0.0
   rspress:
     specifier: ^1.13.0
-    version: 1.13.0(typescript@5.3.3)(webpack@5.90.3)
+    version: 1.13.0(typescript@5.4.2)(webpack@5.90.3)
   tinybench:
     specifier: ^2.6.0
     version: 2.6.0
   typescript:
-    specifier: ^5.2.2
-    version: 5.3.3
+    specifier: ^5.4.2
+    version: 5.4.2
   vitest:
     specifier: ^1.3.1
     version: 1.3.1
@@ -433,6 +439,20 @@ packages:
     os: [win32]
     requiresBuild: true
     dev: true
+    optional: true
+
+  /@emotion/is-prop-valid@0.8.8:
+    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
+    requiresBuild: true
+    dependencies:
+      '@emotion/memoize': 0.7.4
+    dev: false
+    optional: true
+
+  /@emotion/memoize@0.7.4:
+    resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/aix-ppc64@0.19.12:
@@ -3681,7 +3701,7 @@ packages:
       - '@swc/helpers'
     dev: true
 
-  /@rsbuild/plugin-svgr@0.4.0(@rsbuild/core@0.4.0)(typescript@5.3.3):
+  /@rsbuild/plugin-svgr@0.4.0(@rsbuild/core@0.4.0)(typescript@5.4.2):
     resolution: {integrity: sha512-4LxjnzHNnXk3fz4Y5U+QmVY26KX7f8W8n8Pauxw1RHev5Xq9qBwRSPjs10IfA0gyy7xBKocA/O8kON8AeCbkyw==}
     peerDependencies:
       '@rsbuild/core': ^0.4.0
@@ -3689,9 +3709,9 @@ packages:
       '@rsbuild/core': 0.4.0
       '@rsbuild/plugin-react': 0.4.0(@rsbuild/core@0.4.0)
       '@rsbuild/shared': 0.4.0(@swc/helpers@0.5.3)
-      '@svgr/core': 8.1.0(typescript@5.3.3)
+      '@svgr/core': 8.1.0(typescript@5.4.2)
       '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0)
-      '@svgr/plugin-svgo': 8.1.0(@svgr/core@8.1.0)(typescript@5.3.3)
+      '@svgr/plugin-svgo': 8.1.0(@svgr/core@8.1.0)(typescript@5.4.2)
     transitivePeerDependencies:
       - '@swc/helpers'
       - supports-color
@@ -3831,7 +3851,7 @@ packages:
       react-refresh: 0.14.0
     dev: true
 
-  /@rspress/core@1.13.0(typescript@5.3.3)(webpack@5.90.3):
+  /@rspress/core@1.13.0(typescript@5.4.2)(webpack@5.90.3):
     resolution: {integrity: sha512-doh6vCDJKpyK1AkXF3L8HAFMZPrLdT9qBN9nIdQZgROtDv2JwGk3aLWPIyMY054EYSoglBkAcfVndFnFaoH+6g==}
     engines: {node: '>=14.17.6'}
     dependencies:
@@ -3842,7 +3862,7 @@ packages:
       '@modern-js/utils': 2.48.0
       '@rsbuild/core': 0.4.0
       '@rsbuild/plugin-react': 0.4.0(@rsbuild/core@0.4.0)
-      '@rsbuild/plugin-svgr': 0.4.0(@rsbuild/core@0.4.0)(typescript@5.3.3)
+      '@rsbuild/plugin-svgr': 0.4.0(@rsbuild/core@0.4.0)(typescript@5.4.2)
       '@rspress/mdx-rs': 0.4.3
       '@rspress/plugin-auto-nav-sidebar': 1.13.0
       '@rspress/plugin-container-syntax': 1.13.0
@@ -4081,6 +4101,19 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
+  /@spectrum-icons/illustrations@3.6.11(@react-spectrum/provider@3.9.5)(react@18.2.0):
+    resolution: {integrity: sha512-PZjsh6Pc85nlh4mgPuwoXxLIxQiogRO4QRdk1aiH78cTlawbivnpoJc5MnSQUKMM4lIuqjAwYqFshHbDiGPjCQ==}
+    peerDependencies:
+      '@react-spectrum/provider': ^3.0.0
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
+    dependencies:
+      '@react-aria/utils': 3.23.2(react@18.2.0)
+      '@react-spectrum/icon': 3.7.11(@react-spectrum/provider@3.9.5)(react@18.2.0)
+      '@react-spectrum/provider': 3.9.5(react-dom@18.2.0)(react@18.2.0)
+      '@swc/helpers': 0.5.6
+      react: 18.2.0
+    dev: false
+
   /@spectrum-icons/ui@3.6.3(@react-spectrum/provider@3.9.5)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-eBifZgyUYIbNr3v2qytTKBs3paqZcJoHkt5pfNpwTXhK3DbCkXNMOWRCVcCaiU9olKiG0vSzsJE6mlw7P5VmfQ==}
     peerDependencies:
@@ -4200,14 +4233,14 @@ packages:
       '@svgr/babel-plugin-transform-svg-component': 8.0.0(@babel/core@7.24.0)
     dev: true
 
-  /@svgr/core@8.1.0(typescript@5.3.3):
+  /@svgr/core@8.1.0(typescript@5.4.2):
     resolution: {integrity: sha512-8QqtOQT5ACVlmsvKOJNEaWmRPmcojMOzCz4Hs2BGG/toAp/K38LcsMRyLp349glq5AzJbCEeimEoxaX6v/fLrA==}
     engines: {node: '>=14'}
     dependencies:
       '@babel/core': 7.24.0
       '@svgr/babel-preset': 8.1.0(@babel/core@7.24.0)
       camelcase: 6.3.0
-      cosmiconfig: 8.3.6(typescript@5.3.3)
+      cosmiconfig: 8.3.6(typescript@5.4.2)
       snake-case: 3.0.4
     transitivePeerDependencies:
       - supports-color
@@ -4230,21 +4263,21 @@ packages:
     dependencies:
       '@babel/core': 7.24.0
       '@svgr/babel-preset': 8.1.0(@babel/core@7.24.0)
-      '@svgr/core': 8.1.0(typescript@5.3.3)
+      '@svgr/core': 8.1.0(typescript@5.4.2)
       '@svgr/hast-util-to-babel-ast': 8.0.0
       svg-parser: 2.0.4
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@svgr/plugin-svgo@8.1.0(@svgr/core@8.1.0)(typescript@5.3.3):
+  /@svgr/plugin-svgo@8.1.0(@svgr/core@8.1.0)(typescript@5.4.2):
     resolution: {integrity: sha512-Ywtl837OGO9pTLIN/onoWLmDQ4zFUycI1g76vuKGEz6evR/ZTJlJuz3G/fIkb6OVBJ2g0o6CGJzaEjfmEo3AHA==}
     engines: {node: '>=14'}
     peerDependencies:
       '@svgr/core': '*'
     dependencies:
-      '@svgr/core': 8.1.0(typescript@5.3.3)
-      cosmiconfig: 8.3.6(typescript@5.3.3)
+      '@svgr/core': 8.1.0(typescript@5.4.2)
+      cosmiconfig: 8.3.6(typescript@5.4.2)
       deepmerge: 4.3.1
       svgo: 3.2.0
     transitivePeerDependencies:
@@ -4906,7 +4939,7 @@ packages:
     requiresBuild: true
     dev: true
 
-  /cosmiconfig@8.3.6(typescript@5.3.3):
+  /cosmiconfig@8.3.6(typescript@5.4.2):
     resolution: {integrity: sha512-kcZ6+W5QzcJ3P1Mt+83OUv/oHFqZHIx8DuxG6eZ5RGMERoLqp4BuGjhHLYGK+Kf5XVkQvqBSmAy/nGWN3qDgEA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -4919,7 +4952,7 @@ packages:
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
-      typescript: 5.3.3
+      typescript: 5.4.2
     dev: true
 
   /cross-spawn@7.0.3:
@@ -5390,6 +5423,24 @@ packages:
     dependencies:
       fetch-blob: 3.2.0
     dev: true
+
+  /framer-motion@11.0.8(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-1KSGNuqe1qZkS/SWQlDnqK2VCVzRVEoval379j0FiUBJAZoqgwyvqFkfvJbgW2IPFo4wX16K+M0k5jO23lCIjA==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      tslib: 2.6.2
+    optionalDependencies:
+      '@emotion/is-prop-valid': 0.8.8
+    dev: false
 
   /fs-extra@10.1.0:
     resolution: {integrity: sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==}
@@ -7241,12 +7292,12 @@ packages:
       fs-extra: 11.2.0
     dev: true
 
-  /rspress@1.13.0(typescript@5.3.3)(webpack@5.90.3):
+  /rspress@1.13.0(typescript@5.4.2)(webpack@5.90.3):
     resolution: {integrity: sha512-RSMeNZQ87STjKK2domFN9jqPSunzYeJugyZjZyK3CS+hV3RTmnj/IKDk/a5FkjIHqHxJABRBfObToUYPhsHG5g==}
     hasBin: true
     dependencies:
       '@modern-js/node-bundle-require': 2.48.0
-      '@rspress/core': 1.13.0(typescript@5.3.3)(webpack@5.90.3)
+      '@rspress/core': 1.13.0(typescript@5.4.2)(webpack@5.90.3)
       '@rspress/shared': 1.13.0
       cac: 6.7.14
       chalk: 5.3.0
@@ -7604,8 +7655,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /typescript@5.3.3:
-    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
+  /typescript@5.4.2:
+    resolution: {integrity: sha512-+2/g0Fds1ERlP6JsakQQDXjZdZMM+rqpamFZJEKh4kwTIn3iDkgKtby0CeNd5ATNZ4Ry1ax15TMx0W2V+miizQ==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true

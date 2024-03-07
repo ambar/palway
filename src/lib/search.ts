@@ -3,6 +3,7 @@ import {type PalName} from './palNames'
 
 export type PalNode = {
   name: PalName
+  depth: number
   match?: boolean
   child?: PalNode
   pair?: PalNodePair
@@ -40,15 +41,15 @@ export const createTree = (
 ) => {
   // prevent infinite loops
   const visited = new Set<PalName>()
-  const makeNode = (name: PalName) => {
-    const node: PalNode = {name, parents: []}
+  const makeNode = (name: PalName, depth: number) => {
+    const node: PalNode = {name, depth, parents: []}
     visitor.create?.(node)
     return node
   }
-  const makeParents = (node: PalNode): PalNodePair[] => {
+  const makeParents = (node: PalNode, depth: number): PalNodePair[] => {
     return (combosMapByChildName.get(node.name) ?? []).map(([a, b]) => {
-      const left = makeNode(a)
-      const right = makeNode(b)
+      const left = makeNode(a, depth)
+      const right = makeNode(b, depth)
       left.child = node
       right.child = node
       left.mate = right
@@ -67,7 +68,7 @@ export const createTree = (
     })
   }
   const layers: LayerNodes[] = []
-  const root = makeNode(rootName)
+  const root = makeNode(rootName, 0)
   while (true) {
     const layer = layers[layers.length - 1]
     const neighbors: PalNodePair[] = []
@@ -80,7 +81,7 @@ export const createTree = (
         if (r.skip || node.match) {
           return
         }
-        node.parents = makeParents(node)
+        node.parents = makeParents(node, layers.length + 1)
         neighbors.push(...node.parents)
       }
     }

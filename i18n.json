@@ -1,27 +1,15 @@
 {
-  "parent1": {
-    "en": "Parent 1",
-    "de": "Elternteil 1",
-    "es": "Padre 1",
-    "fr": "Parent 1",
-    "it": "Genitore 1",
-    "ko": "부모 1",
-    "pt-BR": "Pai 1",
-    "ru": "Родитель 1",
-    "zh-Hans": "父母 1",
-    "zh-Hant": "父母 1"
-  },
-  "parent2": {
-    "en": "Parent 2",
-    "de": "Elternteil 2",
-    "es": "Padre 2",
-    "fr": "Parent 2",
-    "it": "Genitore 2",
-    "ko": "부모 2",
-    "pt-BR": "Pai 2",
-    "ru": "Родитель 2",
-    "zh-Hans": "父母 2",
-    "zh-Hant": "父母 2"
+  "parent": {
+    "en": "Parent",
+    "de": "Elternteil",
+    "es": "Padre",
+    "fr": "Parent",
+    "it": "Genitore",
+    "ko": "부모",
+    "pt-BR": "Pai",
+    "ru": "Родитель",
+    "zh-Hans": "父母",
+    "zh-Hant": "父母"
   },
   "child": {
     "en": "Child",
@@ -46,6 +34,66 @@
     "ru": "Сброс",
     "zh-Hans": "重置",
     "zh-Hant": "重置"
+  },
+  "range": {
+    "en": "Range",
+    "de": "Reichweite",
+    "es": "Rango",
+    "fr": "Portée",
+    "it": "Raggio",
+    "ko": "범위",
+    "pt-BR": "Alcance",
+    "ru": "Диапазон",
+    "zh-Hans": "范围",
+    "zh-Hant": "範圍"
+  },
+  "layer": {
+    "en": "Layer",
+    "de": "Ebene",
+    "es": "Capa",
+    "fr": "Couche",
+    "it": "Strato",
+    "ko": "레이어",
+    "pt-BR": "Camada",
+    "ru": "Слой",
+    "zh-Hans": "层",
+    "zh-Hant": "層"
+  },
+  "all": {
+    "en": "All",
+    "de": "Alle",
+    "es": "Todos",
+    "fr": "Tous",
+    "it": "Tutti",
+    "ko": "모두",
+    "pt-BR": "Todos",
+    "ru": "Все",
+    "zh-Hans": "全部",
+    "zh-Hant": "全部"
+  },
+  "no-matching-results": {
+    "en": "No matching results",
+    "de": "Keine passenden Ergebnisse",
+    "es": "No hay resultados coincidentes",
+    "fr": "Aucun résultat correspondant",
+    "it": "Nessun risultato corrispondente",
+    "ko": "일치하는 결과가 없습니다",
+    "pt-BR": "Nenhum resultado correspondente",
+    "ru": "Нет подходящих результатов",
+    "zh-Hans": "没有匹配的结果",
+    "zh-Hant": "沒有匹配的結果"
+  },
+  "try-another-search": {
+    "en": "Try another search",
+    "de": "Versuchen Sie eine andere Suche",
+    "es": "Pruebe otra búsqueda",
+    "fr": "Essayez une autre recherche",
+    "it": "Prova un'altra ricerca",
+    "ko": "다른 검색어를 입력해보세요",
+    "pt-BR": "Tente outra busca",
+    "ru": "Попробуйте другой поиск",
+    "zh-Hans": "尝试其他搜索",
+    "zh-Hant": "嘗試其他搜索"
   },
   "pathways": {
     "en": "Pathways",
