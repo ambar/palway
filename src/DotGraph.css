@@ -40,7 +40,7 @@
 
 .graph .node polygon {
   stroke: currentColor;
-  stroke-width: 1.5;
+  stroke-width: 1;
 }
 .graph .node text {
   fill: currentColor;

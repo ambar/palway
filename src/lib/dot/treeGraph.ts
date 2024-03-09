@@ -3,6 +3,21 @@ import type {PalName} from '../palNames'
 import {normalPalsByName} from '../pals'
 import type {PalNode, PalNodePair} from '../search'
 import unfold from '../unfold'
+import type {Shape} from './dot'
+
+type Style = {
+  shape: Shape
+  width?: number
+  height?: number
+}
+const styleMap: Record<'noImage' | 'image', Style> = {
+  noImage: {shape: 'egg'},
+  image: {shape: 'egg', height: 1.5, width: 1.5},
+}
+const styleToAttr = (style: Style) =>
+  Object.entries(style)
+    .map(([k, v]) => `${k}=${v}`)
+    .join(',')
 
 /**
  * Create a text graph of the matched nodes
@@ -14,15 +29,21 @@ export const makeTreeGraph = (
   parent: PalName,
   child: PalName,
   i18n: (key: string) => string,
+  {
+    preset = 'image',
+  }: {
+    preset?: 'noImage' | 'image'
+  } = {},
 ) => {
+  const style = styleMap[preset]
   const results: string[] = []
   const visited = new Set<PalNode>()
   const attr = (node: PalNode) => {
     const palName = node.name
-    const src = getPalIcon(normalPalsByName[palName].pal_dev_name)
     return [
       // 'fixedsize=true',
-      `image="${src}"`,
+      preset === 'image' &&
+        `image="${getPalIcon(normalPalsByName[palName].pal_dev_name)}"`,
       'labelloc=b',
       `label="${name(palName)}"`,
       palName === parent ? 'class=from' : '',
@@ -103,7 +124,7 @@ digraph Palway {
   node [fontname="Helvetica,Arial,sans-serif",style=dashed]
   edge [fontname="Helvetica,Arial,sans-serif",style=dashed,arrowsize=.9,arrowhead=empty]
   rankdir=BT
-  node [shape=egg,width=1.5,height=1.5]
+  node [${styleToAttr(style)},labelloc=b];
  ${results.join('\n')}
 }`
 }

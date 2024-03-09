@@ -1,6 +1,21 @@
 import getPalIcon from '../getPalIcon'
 import type {PalName} from '../palNames'
 import {normalPalsByName} from '../pals'
+import type {Shape} from './dot'
+
+type Style = {
+  shape: Shape
+  width?: number
+  height?: number
+}
+const styleMap: Record<'noImage' | 'image', Style> = {
+  noImage: {shape: 'egg'},
+  image: {shape: 'egg', height: 1.5, width: 1.5},
+}
+const styleToAttr = (style: Style) =>
+  Object.entries(style)
+    .map(([k, v]) => `${k}=${v}`)
+    .join(',')
 
 /**
  * Create a combo graph of all possible matches for a given child
@@ -9,11 +24,22 @@ import {normalPalsByName} from '../pals'
 export const makeComboGraph = (
   parents: [PalName, PalName][],
   child: PalName,
-  i18n,
+  i18n: (key: string) => string,
+  {
+    preset = 'image',
+  }: {
+    preset?: 'noImage' | 'image'
+  } = {},
 ) => {
+  const style = styleMap[preset]
   const attr = (palName: PalName) => {
-    const src = getPalIcon(normalPalsByName[palName].pal_dev_name)
-    return String.raw`image="${src}", labelloc=b, label="${name(palName)}"`
+    return [
+      preset === 'image' &&
+        `image="${getPalIcon(normalPalsByName[palName].pal_dev_name)}"`,
+      `label="${name(palName)}"`,
+    ]
+      .filter(Boolean)
+      .join(',')
   }
   const name = (palName: PalName) => {
     const pal = normalPalsByName[palName]
@@ -32,7 +58,7 @@ digraph Palway {
   node [fontname="Helvetica,Arial,sans-serif",style=dashed]
   edge [fontname="Helvetica,Arial,sans-serif",style=dashed,arrowsize=.9,arrowhead=empty]
   rankdir=LR;
-  node [shape=egg,width=1.5, height=1.5];
+  node [${styleToAttr(style)},labelloc=b];
   root [${attr(child)},class="root"]
 
   ${parents
@@ -44,9 +70,9 @@ digraph Palway {
       const b = `${nb}_node_b_${i}`
       return String.raw`
   ${connect}[shape=circle,style=filled,label="",width=.05, height=.05]
-  ${connect} -> root [] ;
-  ${a} -> ${connect} [dir=none,] ;
-  ${b} -> ${connect} [dir=none,] ;
+  ${connect} -> root []
+  ${a} -> ${connect} [dir=none]
+  ${b} -> ${connect} [dir=none]
   ${a} [${attr(parent[0])}]
   ${b} [${attr(parent[1])}]
 `

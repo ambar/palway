@@ -48,6 +48,7 @@ const PathwayFinder = () => {
   const [graph, setGraph] = useState('')
   const [result, setResult] = useState<Result>(null)
   const [rangeType, setRangeType] = useState<'Layer' | 'All'>('Layer')
+  const [noImage, setNoImage] = useState(false)
 
   useEffect(() => {
     if (parent1 && parent2) {
@@ -123,7 +124,11 @@ const PathwayFinder = () => {
       return
     }
     if (result.type === 'combo') {
-      setGraph(makeComboGraph(result.combos, result.child, t))
+      setGraph(
+        makeComboGraph(result.combos, result.child, t, {
+          preset: noImage ? 'noImage' : 'image',
+        }),
+      )
     } else if (result.type === 'tree') {
       const {nodes, range, tree, parent, child} = result
       console.time('makeTreeGraph')
@@ -135,12 +140,14 @@ const PathwayFinder = () => {
               const layer = result.layers[x.layer]
               return layer.slice(Math.max(0, range.start - 1), range.end)
             })
-      const treeGraph = makeTreeGraph(sliced, tree.root, parent, child, t)
+      const treeGraph = makeTreeGraph(sliced, tree.root, parent, child, t, {
+        preset: noImage ? 'noImage' : 'image',
+      })
       console.timeEnd('makeTreeGraph')
       log(tree, {nodes, range}, sliced)
       setGraph(treeGraph)
     }
-  }, [result, t])
+  }, [result, rangeType, noImage, t])
 
   const noResult = result?.type === 'tree' && result.nodes.length === 0
   let searchResult: React.ReactNode = null
@@ -161,11 +168,15 @@ const PathwayFinder = () => {
             orientation="horizontal"
             labelPosition="side"
             value={rangeType}
-            onChange={rangeType => setRangeType(rangeType as string)}
+            onChange={value => setRangeType(value as typeof rangeType)}
           >
             <ui.Radio value="Layer">{t('layer')}</ui.Radio>
             <ui.Radio value="All">{t('all')}</ui.Radio>
           </ui.RadioGroup>
+
+          {/* <ui.Switch isSelected={noImage} onChange={setNoImage}>
+            No image
+          </ui.Switch> */}
         </ui.Flex>
 
         <ui.Flex justifyContent="center" wrap>
