@@ -25,5 +25,5 @@
       "i18n": ["./i18n.json"]
     }
   },
-  "references": [{ "path": "./tsconfig.node.json" }]
+  // "references": [{ "path": "./tsconfig.node.json" }]
 }

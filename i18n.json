@@ -35,6 +35,42 @@
     "zh-Hans": "重置",
     "zh-Hant": "重置"
   },
+  "styles": {
+    "en": "Styles",
+    "de": "Stile",
+    "es": "Estilos",
+    "fr": "Styles",
+    "it": "Stili",
+    "ko": "스타일",
+    "pt-BR": "Estilos",
+    "ru": "Стили",
+    "zh-Hans": "样式",
+    "zh-Hant": "樣式"
+  },
+  "image": {
+    "en": "Image",
+    "de": "Bild",
+    "es": "Imagen",
+    "fr": "Image",
+    "it": "Immagine",
+    "ko": "이미지",
+    "pt-BR": "Imagem",
+    "ru": "Изображение",
+    "zh-Hans": "图片",
+    "zh-Hant": "圖片"
+  },
+  "vertical": {
+    "en": "Vertical",
+    "de": "Vertikal",
+    "es": "Vertical",
+    "fr": "Vertical",
+    "it": "Verticale",
+    "ko": "세로",
+    "pt-BR": "Vertical",
+    "ru": "Вертикально",
+    "zh-Hans": "纵向",
+    "zh-Hant": "縱向"
+  },
   "range": {
     "en": "Range",
     "de": "Reichweite",

@@ -1,8 +1,8 @@
 import getPalIcon from '../getPalIcon'
 import type {PalName} from '../palNames'
 import {normalPalsByName} from '../pals'
-import {styleMap, styleToAttr} from './shared'
 import type {RankDir} from './dot'
+import {styleMap, styleToAttr} from './shared'
 
 type Options = {
   preset?: 'noImage' | 'image'

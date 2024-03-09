@@ -1,5 +1,7 @@
 import * as ui from '@adobe/react-spectrum'
 import NoSearchResults from '@spectrum-icons/illustrations/NoSearchResults'
+import More from '@spectrum-icons/workflow/More'
+
 // import {motion, AnimatePresence} from 'framer-motion'
 import {useEffect, useState} from 'react'
 import DotGraph from './DotGraph'
@@ -34,6 +36,8 @@ type Result =
       layerRanges: {count: number; layer: number; range: Range}[]
     }
 
+type StyleKey = 'Image' | 'Vertical'
+
 const defaultRange = {start: 1, end: 5}
 const log = devlog('PathwayFinder')
 
@@ -46,9 +50,13 @@ const PathwayFinder = () => {
   const [parent2, setParent2] = useState<PalName>()
   const [child, setChild] = useState<PalName>()
   const [graph, setGraph] = useState('')
-  const [result, setResult] = useState<Result>(null)
+  const [result, setResult] = useState<Result | null>()
   const [rangeType, setRangeType] = useState<'Layer' | 'All'>('Layer')
-  const [noImage, setNoImage] = useState(false)
+  // const [styleKeys, setStyleKeys] = useState(
+  //   () => new Set<StyleKey>(['Image', 'Vertical']),
+  // )
+  const [withImage, setWithImage] = useState(true)
+  const [isVertical, setIsVertical] = useState(true)
 
   useEffect(() => {
     if (parent1 && parent2) {
@@ -78,7 +86,7 @@ const PathwayFinder = () => {
         return
       }
       console.time('treeSearch')
-      const nodes = []
+      const nodes: PalNode[] = []
       const tree = createTree(child, {
         create(node) {
           if (node.name === parent) {
@@ -126,7 +134,8 @@ const PathwayFinder = () => {
     if (result.type === 'combo') {
       setGraph(
         makeComboGraph(result.combos, result.child, t, {
-          preset: noImage ? 'noImage' : 'image',
+          // preset: styleKeys.has('Image') ? 'image' : 'noImage',
+          // direction: styleKeys.has('Vertical') ? 'BT' : 'LR',
         }),
       )
     } else if (result.type === 'tree') {
@@ -135,88 +144,122 @@ const PathwayFinder = () => {
       const sliced =
         rangeType === 'All'
           ? nodes.slice(range.start - 1, range.end)
-          : result.layerRanges.flatMap((x, i) => {
+          : result.layerRanges.flatMap(x => {
               const range = x.range
               const layer = result.layers[x.layer]
               return layer.slice(Math.max(0, range.start - 1), range.end)
             })
       const treeGraph = makeTreeGraph(sliced, tree.root, parent, child, t, {
-        preset: noImage ? 'noImage' : 'image',
+        preset: withImage ? 'image' : 'noImage',
+        direction: isVertical ? 'BT' : 'LR',
       })
       console.timeEnd('makeTreeGraph')
       log(tree, {nodes, range}, sliced)
       setGraph(treeGraph)
     }
-  }, [result, rangeType, noImage, t])
+  }, [result, rangeType, withImage, isVertical, t])
 
-  const noResult = result?.type === 'tree' && result.nodes.length === 0
+  // const styleMenu = (
+  //   <ui.MenuTrigger>
+  //     <ui.ActionButton isQuiet marginStart="size-100">
+  //       <More />
+  //     </ui.ActionButton>
+  //     <ui.Menu
+  //       selectionMode="multiple"
+  //       selectedKeys={styleKeys}
+  //       onSelectionChange={setStyleKeys}
+  //     >
+  //       <ui.Section title={t('styles')}>
+  //         <ui.Item key="Image">{t('image')}</ui.Item>
+  //         {result?.type === 'tree' && (
+  //           <ui.Item key="Vertical">{t('vertical')}</ui.Item>
+  //         )}
+  //       </ui.Section>
+  //     </ui.Menu>
+  //   </ui.MenuTrigger>
+  // )
+
   let searchResult: React.ReactNode = null
-  if (noResult) {
-    searchResult = (
-      <ui.IllustratedMessage marginTop="5em">
-        <NoSearchResults />
-        <ui.Heading>{t('no-matching-results')}</ui.Heading>
-        <ui.Content>{t('try-another-search')}</ui.Content>
-      </ui.IllustratedMessage>
-    )
-  } else if (result?.type === 'tree' && result.nodes.length > 0) {
-    searchResult = (
-      <ui.Flex maxWidth={1000} margin="1em auto" direction="column" gap=".5em">
-        <ui.Flex justifyContent="center">
-          <ui.RadioGroup
-            label={t('range')}
-            orientation="horizontal"
-            labelPosition="side"
-            value={rangeType}
-            onChange={value => setRangeType(value as typeof rangeType)}
-          >
-            <ui.Radio value="Layer">{t('layer')}</ui.Radio>
-            <ui.Radio value="All">{t('all')}</ui.Radio>
-          </ui.RadioGroup>
+  if (result?.type === 'combo') {
+    // noop
+  } else if (result?.type === 'tree') {
+    const isEmpty = result.nodes.length === 0
+    if (isEmpty) {
+      searchResult = (
+        <ui.IllustratedMessage marginTop="5em">
+          <NoSearchResults />
+          <ui.Heading>{t('no-matching-results')}</ui.Heading>
+          <ui.Content>{t('try-another-search')}</ui.Content>
+        </ui.IllustratedMessage>
+      )
+    } else if (result.nodes.length > 0) {
+      searchResult = (
+        <ui.Flex
+          maxWidth={1000}
+          margin="1em auto"
+          direction="column"
+          gap=".5em"
+        >
+          <ui.Flex justifyContent="center">
+            <ui.RadioGroup
+              label={t('range')}
+              orientation="horizontal"
+              labelPosition="side"
+              value={rangeType}
+              onChange={value => setRangeType(value as typeof rangeType)}
+            >
+              <ui.Radio value="Layer">{t('layer')}</ui.Radio>
+              <ui.Radio value="All">{t('all')}</ui.Radio>
+            </ui.RadioGroup>
 
-          {/* <ui.Switch isSelected={noImage} onChange={setNoImage}>
-            No image
-          </ui.Switch> */}
+            <ui.Switch isSelected={withImage} onChange={setWithImage}>
+              {t('image')}
+            </ui.Switch>
+
+            <ui.Switch isSelected={isVertical} onChange={setIsVertical}>
+              {t('vertical')}
+            </ui.Switch>
+          </ui.Flex>
+
+          <ui.Flex justifyContent="center" wrap>
+            {rangeType === 'Layer' &&
+              result.layerRanges.map((x, i) => (
+                <ui.RangeSlider
+                  key={x.layer}
+                  marginX="auto"
+                  margin="0 1em"
+                  label={`${t('layer')} ${x.layer} (${x.count})`}
+                  value={x.range}
+                  maxValue={x.count}
+                  onChange={range => {
+                    setResult({
+                      ...result,
+                      layerRanges: result.layerRanges.map((y, j) =>
+                        i === j ? {...x, range} : y,
+                      ),
+                    })
+                  }}
+                />
+              ))}
+          </ui.Flex>
+
+          {rangeType === 'All' && (
+            <ui.RangeSlider
+              marginX="auto"
+              maxWidth={1000}
+              width="100%"
+              label={`${t('pathways')} (${result.nodes.length})`}
+              value={result.range}
+              minValue={1}
+              maxValue={result.nodes.length}
+              onChange={range => {
+                setResult({...result, range})
+              }}
+            />
+          )}
         </ui.Flex>
-
-        <ui.Flex justifyContent="center" wrap>
-          {rangeType === 'Layer' &&
-            result.layerRanges.map((x, i) => (
-              <ui.RangeSlider
-                key={x.layer}
-                marginX="auto"
-                margin="0 1em"
-                label={`${t('layer')} ${x.layer} (${x.count})`}
-                value={x.range}
-                maxValue={x.count}
-                onChange={range => {
-                  setResult({
-                    ...result,
-                    layerRanges: result.layerRanges.map((y, j) =>
-                      i === j ? {...x, range} : y,
-                    ),
-                  })
-                }}
-              />
-            ))}
-        </ui.Flex>
-
-        {rangeType === 'All' && (
-          <ui.RangeSlider
-            marginX="auto"
-            maxWidth={1000}
-            width="100%"
-            label={`${t('pathways')} (${result.nodes.length})`}
-            value={result.range}
-            minValue={1}
-            maxValue={result.nodes.length}
-            onChange={range => {
-              setResult({...result, range})
-            }}
-          />
-        )}
-      </ui.Flex>
-    )
+      )
+    }
   }
 
   return (
@@ -252,7 +295,6 @@ const PathwayFinder = () => {
               setParent1(key)
             }}
           />
-          {/* <Add /> */}
           <PalSelect
             label={`${t('parent')} 2`}
             selectedKey={parent2}
@@ -265,17 +307,13 @@ const PathwayFinder = () => {
               setParent2(key)
             }}
           />
-          {/* <ChevronRight /> */}
           <PalSelect
             label={t('child')}
             selectedKey={child}
             onSelectionChange={key => {
-              // TODO: add free combo option
               if (parent1 && parent2) {
                 setParent2('')
               }
-              // setParent1('')
-              // setParent2('')
               setChild(key)
             }}
           />
@@ -283,6 +321,7 @@ const PathwayFinder = () => {
             <ui.Button type="reset" variant="secondary">
               {t('reset')}
             </ui.Button>
+            {/* {styleMenu} */}
           </ui.ButtonGroup>
         </ui.Flex>
         {searchResult}
