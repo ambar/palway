@@ -7,6 +7,12 @@ export default defineConfig({
   route: {
     cleanUrls: true,
   },
+  builderConfig: {
+    output: {
+      // rspack is buggy
+      legalComments: 'none',
+    },
+  },
   themeConfig: {
     search: false,
     // nav: [
