@@ -26,7 +26,7 @@ export const getAllCombosMap = (dedupe = false) => {
       if (!map.has(nameA)) {
         map.set(nameA, new Map())
       }
-      map.get(nameA)!.set(nameB, value)
+      map.get(nameA)?.set(nameB, value)
     }
   }
   return map
@@ -45,13 +45,13 @@ for (const [a, bMap] of dedupedCombosMap) {
     if (!fullCombosMap.has(b)) {
       fullCombosMap.set(b, new Map())
     }
-    fullCombosMap.get(a)!.set(b, c)
-    fullCombosMap.get(b)!.set(a, c)
+    fullCombosMap.get(a)?.set(b, c)
+    fullCombosMap.get(b)?.set(a, c)
 
     if (!combosMapByChildName.has(c)) {
       combosMapByChildName.set(c, [])
     }
-    combosMapByChildName.get(c)!.push([a, b])
+    combosMapByChildName.get(c)?.push([a, b])
   }
 }
 

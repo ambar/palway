@@ -10,7 +10,7 @@ import {type PalPair, findReverseParents, getCombo} from './lib/combos'
 import devlog from './lib/devlog'
 import {makeComboGraph} from './lib/dot/comboGraph'
 import {makeTreeGraph} from './lib/dot/treeGraph'
-import {PalName} from './lib/palNames'
+import type {PalName} from './lib/palNames'
 import {type PalNode, type PalTree, createTree} from './lib/search'
 import useI18n from './lib/useI18n'
 

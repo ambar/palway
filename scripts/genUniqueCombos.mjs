@@ -1,5 +1,5 @@
-import * as fs from 'fs'
 import assert from 'node:assert'
+import * as fs from 'node:fs'
 import stringify from 'json-stringify-pretty-compact'
 import {normalPalsByName} from '../src/lib/pals'
 const csvFilePath = './src/data/uniqueCombos.csv'

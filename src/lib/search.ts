@@ -1,5 +1,5 @@
 import {combosMapByChildName} from './combos'
-import {type PalName} from './palNames'
+import type {PalName} from './palNames'
 
 export type PalNode = {
   name: PalName

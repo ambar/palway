@@ -21,7 +21,7 @@ export const normalPals: NormalPal[] = pals
       !pal.is_tower_boss &&
       pal.pal_index !== '-1',
   )
-  .sort((a, b) => parseInt(a.pal_index) - parseInt(b.pal_index))
+  .sort((a, b) => Number.parseInt(a.pal_index) - Number.parseInt(b.pal_index))
 
 /**
  * Normal pals sorted by combi_rank,
