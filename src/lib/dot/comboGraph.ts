@@ -1,21 +1,13 @@
 import getPalIcon from '../getPalIcon'
 import type {PalName} from '../palNames'
 import {normalPalsByName} from '../pals'
-import type {Shape} from './dot'
+import {styleMap, styleToAttr} from './shared'
+import type {RankDir} from './dot'
 
-type Style = {
-  shape: Shape
-  width?: number
-  height?: number
+type Options = {
+  preset?: 'noImage' | 'image'
+  direction?: RankDir
 }
-const styleMap: Record<'noImage' | 'image', Style> = {
-  noImage: {shape: 'egg'},
-  image: {shape: 'egg', height: 1.5, width: 1.5},
-}
-const styleToAttr = (style: Style) =>
-  Object.entries(style)
-    .map(([k, v]) => `${k}=${v}`)
-    .join(',')
 
 /**
  * Create a combo graph of all possible matches for a given child
@@ -25,11 +17,7 @@ export const makeComboGraph = (
   parents: [PalName, PalName][],
   child: PalName,
   i18n: (key: string) => string,
-  {
-    preset = 'image',
-  }: {
-    preset?: 'noImage' | 'image'
-  } = {},
+  {preset = 'image', direction = 'LR'}: Options = {},
 ) => {
   const style = styleMap[preset]
   const attr = (palName: PalName) => {
@@ -57,8 +45,8 @@ export const makeComboGraph = (
 digraph Palway {
   node [fontname="Helvetica,Arial,sans-serif",style=dashed]
   edge [fontname="Helvetica,Arial,sans-serif",style=dashed,arrowsize=.9,arrowhead=empty]
-  rankdir=LR;
-  node [${styleToAttr(style)},labelloc=b];
+  rankdir=${direction}
+  node [${styleToAttr(style)}];
   root [${attr(child)},class="root"]
 
   ${parents

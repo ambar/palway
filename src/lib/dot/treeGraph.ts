@@ -3,21 +3,13 @@ import type {PalName} from '../palNames'
 import {normalPalsByName} from '../pals'
 import type {PalNode, PalNodePair} from '../search'
 import unfold from '../unfold'
-import type {Shape} from './dot'
+import {styleMap, styleToAttr} from './shared'
+import type {RankDir} from './dot'
 
-type Style = {
-  shape: Shape
-  width?: number
-  height?: number
+type Options = {
+  preset?: 'noImage' | 'image'
+  direction?: RankDir
 }
-const styleMap: Record<'noImage' | 'image', Style> = {
-  noImage: {shape: 'egg'},
-  image: {shape: 'egg', height: 1.5, width: 1.5},
-}
-const styleToAttr = (style: Style) =>
-  Object.entries(style)
-    .map(([k, v]) => `${k}=${v}`)
-    .join(',')
 
 /**
  * Create a text graph of the matched nodes
@@ -29,11 +21,7 @@ export const makeTreeGraph = (
   parent: PalName,
   child: PalName,
   i18n: (key: string) => string,
-  {
-    preset = 'image',
-  }: {
-    preset?: 'noImage' | 'image'
-  } = {},
+  {preset = 'image', direction = 'BT'}: Options = {},
 ) => {
   const style = styleMap[preset]
   const results: string[] = []
@@ -123,8 +111,8 @@ export const makeTreeGraph = (
 digraph Palway {
   node [fontname="Helvetica,Arial,sans-serif",style=dashed]
   edge [fontname="Helvetica,Arial,sans-serif",style=dashed,arrowsize=.9,arrowhead=empty]
-  rankdir=BT
-  node [${styleToAttr(style)},labelloc=b];
+  rankdir=${direction}
+  node [${styleToAttr(style)}];
  ${results.join('\n')}
 }`
 }

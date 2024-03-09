@@ -1,3 +1,5 @@
+export type RankDir = 'TB' | 'LR' | 'BT' | 'RL'
+
 export type Shape =
   | 'box'
   | 'polygon'
