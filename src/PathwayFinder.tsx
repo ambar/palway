@@ -200,7 +200,7 @@ const PathwayFinder = () => {
           direction="column"
           gap=".5em"
         >
-          <ui.Flex justifyContent="center">
+          <ui.Flex justifyContent="center" wrap="wrap" columnGap=".5em">
             <ui.RadioGroup
               label={t('range')}
               orientation="horizontal"
