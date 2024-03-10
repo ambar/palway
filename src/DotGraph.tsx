@@ -1,21 +1,15 @@
-import type {Viz} from '@viz-js/viz'
 import {useEffect, useRef} from 'react'
 import './DotGraph.css'
 import getPalIcon from './lib/getPalIcon'
 import once from './lib/once'
 import {normalPalsByName} from './lib/pals'
 
-let viz: Viz
-export const init = async () => {
-  // HMR
-  if (viz) {
-    return viz
-  }
+export const init = once(async () => {
   console.time('vis:init')
-  viz = (await import('@viz-js/viz')).instance()
+  const viz = (await import('@viz-js/viz')).instance()
   console.timeEnd('vis:init')
   return viz
-}
+})
 
 // https://graphviz.org/docs/layouts/
 type Engine =
