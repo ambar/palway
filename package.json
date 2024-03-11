@@ -13,7 +13,7 @@
     "lint:fix": "biome check --apply .",
     "lint:fix-unsafe": "biome check --apply-unsafe .",
     "test": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage --coverage.exclude scripts"
   },
   "dependencies": {
     "@adobe/react-spectrum": "^3.33.1",
