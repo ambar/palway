@@ -31,8 +31,7 @@ jobs:
       - name: test
         run: |
           pnpm test:coverage
-      # - name: report
-      #   uses: coverallsapp/github-action@v2
-      #   with:
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
-      #     path-to-lcov: ./coverage/lcov.info
+      - name: report
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
