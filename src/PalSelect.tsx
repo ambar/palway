@@ -1,10 +1,10 @@
 import * as ui from '@adobe/react-spectrum'
 import {forwardRef, useMemo} from 'react'
 import getPalIcon from './lib/getPalIcon'
+import type {PalName} from './lib/palNames'
 // import {useTreeData} from 'react-stately'
 import {type Pal, normalPals} from './lib/pals'
 import useI18n from './lib/useI18n'
-import type {PalName} from './lib/palNames'
 
 type PalSelectOptionItem = {
   id: PalName

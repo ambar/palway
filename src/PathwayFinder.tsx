@@ -1,12 +1,11 @@
 import * as ui from '@adobe/react-spectrum'
 import NoSearchResults from '@spectrum-icons/illustrations/NoSearchResults'
-import More from '@spectrum-icons/workflow/More'
-
+// import More from '@spectrum-icons/workflow/More'
 // import {motion, AnimatePresence} from 'framer-motion'
 import {useEffect, useState} from 'react'
 import DotGraph from './DotGraph'
-import {PalSelect} from './PalSelect'
 import {PalMultiSelect} from './PalMultiSelect'
+import {PalSelect} from './PalSelect'
 import {type PalPair, findReverseParents, getCombo} from './lib/combos'
 import devlog from './lib/devlog'
 import {makeComboGraph} from './lib/dot/comboGraph'
@@ -35,6 +34,8 @@ type Result =
       layers: Record<number, PalNode[]>
       range: Range
       layerRanges: {count: number; layer: number; range: Range}[]
+      filterKeys?: Set<PalName>
+      filterCondition?: 'AND' | 'OR'
     }
 
 type StyleKey = 'Image' | 'Vertical'
@@ -120,6 +121,7 @@ const PathwayFinder = () => {
           layer: Number(n),
           range: {start: 0, end: i === 0 ? 2 : 1},
         })),
+        filterKeys: new Set([parent]),
       })
       return
     }
@@ -258,6 +260,13 @@ const PathwayFinder = () => {
               }}
             />
           )}
+
+          <ui.Flex justifyContent="center" wrap="wrap" columnGap=".5em">
+            <PalMultiSelect
+              key={result.parent}
+              defaultSelectedKeys={result.filterKeys}
+            />
+          </ui.Flex>
         </ui.Flex>
       )
     }
@@ -265,7 +274,6 @@ const PathwayFinder = () => {
 
   return (
     <ui.View>
-      <PalMultiSelect />
       <ui.Form
         validationBehavior="native"
         onReset={() => {

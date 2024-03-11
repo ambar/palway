@@ -5,7 +5,7 @@ import {type Pal, normalPals} from './pals'
 
 type CombosMap = Map<PalName, Map<PalName, PalName | null>>
 
-const sortPalName = (a: PalName, b: PalName): [PalName, PalName] => {
+const sortPalName = (a: PalName, b: PalName): PalPair => {
   if (a.localeCompare(b) > 0) {
     return [b, a]
   }
@@ -21,7 +21,7 @@ export const getAllCombosMap = (dedupe = false) => {
       // 18769 -> 9453
       const [nameA, nameB] = dedupe
         ? sortPalName(a.pal_name, b.pal_name)
-        : ([a.pal_name, b.pal_name] as [PalName, PalName])
+        : ([a.pal_name, b.pal_name] as PalPair)
       const value = (combineParent(a, b)?.pal_name as PalName) ?? null
       if (!map.has(nameA)) {
         map.set(nameA, new Map())

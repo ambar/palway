@@ -1,3 +1,4 @@
+import type {PalPair} from '../combos'
 import getPalIcon from '../getPalIcon'
 import type {PalName} from '../palNames'
 import {normalPalsByName} from '../pals'
@@ -14,7 +15,7 @@ type Options = {
  * @see https://graphviz.org/docs/graph/
  */
 export const makeComboGraph = (
-  parents: [PalName, PalName][],
+  parents: PalPair[],
   child: PalName,
   i18n: (key: string) => string,
   {preset = 'image', direction = 'LR'}: Options = {},
