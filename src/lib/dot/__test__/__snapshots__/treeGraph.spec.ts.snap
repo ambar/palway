@@ -1,0 +1,48 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`makeTreeGraph 1`] = `
+"
+digraph Palway {
+  node [fontname="Helvetica,Arial,sans-serif",style=dashed]
+  edge [fontname="Helvetica,Arial,sans-serif",style=dashed,arrowsize=.9,arrowhead=empty]
+  rankdir=BT
+  node [shape=egg,height=1.5,width=1.5,labelloc=b];
+ i2[shape=circle,style=filled,label="",width=.05,height=.05]
+i2 -> i3
+i3 [image="/src/assets/images/pal_icons_200w/T_FlowerDoll_icon_normal.png",labelloc=b,label="palName_FlowerDoll"]
+i0 [image="/src/assets/images/pal_icons_200w/T_PinkCat_icon_normal.png",labelloc=b,label="palName_PinkCat"]
+i1 [image="/src/assets/images/pal_icons_200w/T_JetDragon_icon_normal.png",labelloc=b,label="palName_JetDragon",class=from]
+i0 -> i2 [dir=none]
+i1 -> i2 [dir=none]
+i5[shape=circle,style=filled,label="",width=.05,height=.05]
+i5 -> i6
+i6 [image="/src/assets/images/pal_icons_200w/T_Boar_icon_normal.png",labelloc=b,label="palName_Boar"]
+i4 [image="/src/assets/images/pal_icons_200w/T_SheepBall_icon_normal.png",labelloc=b,label="palName_SheepBall",class=warn]
+i4 -> i5 [dir=none]
+i3 -> i5 [dir=none]
+i8[shape=circle,style=filled,label="",width=.05,height=.05]
+i8 -> i9
+i9 [image="/src/assets/images/pal_icons_200w/T_MopBaby_icon_normal.png",labelloc=b,label="palName_MopBaby"]
+i7 [image="/src/assets/images/pal_icons_200w/T_SheepBall_icon_normal.png",labelloc=b,label="palName_SheepBall",class=warn]
+i7 -> i8 [dir=none]
+i6 -> i8 [dir=none]
+i11[shape=circle,style=filled,label="",width=.05,height=.05]
+i11 -> i12
+i12 [image="/src/assets/images/pal_icons_200w/T_WindChimes_Ice_icon_normal.png",labelloc=b,label="palName_WindChimes_Ice"]
+i10 [image="/src/assets/images/pal_icons_200w/T_WindChimes_icon_normal.png",labelloc=b,label="palName_WindChimes"]
+i10 -> i11 [dir=none]
+i9 -> i11 [dir=none]
+i14[shape=circle,style=filled,label="",width=.05,height=.05]
+i14 -> i15
+i15 [image="/src/assets/images/pal_icons_200w/T_PinkCat_icon_normal.png",labelloc=b,label="palName_PinkCat"]
+i13 [image="/src/assets/images/pal_icons_200w/T_ChickenPal_icon_normal.png",labelloc=b,label="palName_ChickenPal"]
+i13 -> i14 [dir=none]
+i12 -> i14 [dir=none]
+i17[shape=circle,style=filled,label="",width=.05,height=.05]
+i17 -> i18
+i18 [image="/src/assets/images/pal_icons_200w/T_SheepBall_icon_normal.png",labelloc=b,label="palName_SheepBall",class=root]
+i16 [image="/src/assets/images/pal_icons_200w/T_SheepBall_icon_normal.png",labelloc=b,label="palName_SheepBall",class=warn]
+i15 -> i17 [dir=none]
+i16 -> i17 [dir=none]
+}"
+`;

@@ -1,0 +1,22 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`makeComboGraph 1`] = `
+"
+digraph Palway {
+  node [fontname="Helvetica,Arial,sans-serif",style=dashed]
+  edge [fontname="Helvetica,Arial,sans-serif",style=dashed,arrowsize=.9,arrowhead=empty]
+  rankdir=LR
+  node [shape=egg,height=1.5,width=1.5,labelloc=b];
+  root [image="/src/assets/images/pal_icons_200w/T_CuteFox_icon_normal.png",label="palName_CuteFox",class="root"]
+
+  
+  Cattiva_Lifmunk_0[shape=circle,style=filled,label="",width=.05, height=.05]
+  Cattiva_Lifmunk_0 -> root []
+  Cattiva_node_a_0 -> Cattiva_Lifmunk_0 [dir=none]
+  Lifmunk_node_b_0 -> Cattiva_Lifmunk_0 [dir=none]
+  Cattiva_node_a_0 [image="/src/assets/images/pal_icons_200w/T_PinkCat_icon_normal.png",label="palName_PinkCat"]
+  Lifmunk_node_b_0 [image="/src/assets/images/pal_icons_200w/T_Carbunclo_icon_normal.png",label="palName_Carbunclo"]
+
+}
+"
+`;
