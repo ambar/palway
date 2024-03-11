@@ -1,31 +1,42 @@
 import * as ui from '@adobe/react-spectrum'
-import {useMemo} from 'react'
+import {forwardRef, useMemo} from 'react'
 import getPalIcon from './lib/getPalIcon'
 // import {useTreeData} from 'react-stately'
 import {type Pal, normalPals} from './lib/pals'
 import useI18n from './lib/useI18n'
+import type {PalName} from './lib/palNames'
 
 type PalSelectOptionItem = {
-  id: string
+  id: PalName
   name: string
   pal: Pal
 }
 
-export const PalSelect = (
-  props: Omit<ui.SpectrumComboBoxProps<PalSelectOptionItem>, 'children'>,
-) => {
+export const getPalOptions = (
+  t: ReturnType<typeof useI18n>,
+): PalSelectOptionItem[] => {
+  return normalPals.map(pal => ({
+    id: pal.pal_name,
+    name: `${t(`palName_${pal.pal_dev_name}`)} #${pal.pal_index}`,
+    pal,
+  }))
+}
+
+export type PalSelectProps = Omit<
+  ui.SpectrumComboBoxProps<PalSelectOptionItem>,
+  'children'
+>
+
+export const PalSelect = forwardRef<unknown, PalSelectProps>((props, ref) => {
   const t = useI18n()
   const options = useMemo(() => {
-    return normalPals.map(pal => ({
-      id: pal.pal_name,
-      name: `${t(`palName_${pal.pal_dev_name}`)} #${pal.pal_index}`,
-      pal,
-    }))
+    return getPalOptions(t)
   }, [t])
 
   return (
     <ui.Flex direction="row" gap="size-100" wrap>
       <ui.ComboBox
+        ref={ref}
         defaultItems={options}
         menuTrigger="focus"
         width="auto"
@@ -47,7 +58,11 @@ export const PalSelect = (
               src={imgSrc}
               alt={item.name}
               loading="lazy"
-              style={{borderRadius: 9999, objectFit: 'cover', display: 'block'}}
+              style={{
+                borderRadius: 9999,
+                objectFit: 'cover',
+                display: 'block',
+              }}
             />
           )
           // slots ref:
@@ -68,4 +83,4 @@ export const PalSelect = (
       </ui.ComboBox>
     </ui.Flex>
   )
-}
+})

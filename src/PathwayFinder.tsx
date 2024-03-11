@@ -6,6 +6,7 @@ import More from '@spectrum-icons/workflow/More'
 import {useEffect, useState} from 'react'
 import DotGraph from './DotGraph'
 import {PalSelect} from './PalSelect'
+import {PalMultiSelect} from './PalMultiSelect'
 import {type PalPair, findReverseParents, getCombo} from './lib/combos'
 import devlog from './lib/devlog'
 import {makeComboGraph} from './lib/dot/comboGraph'
@@ -264,6 +265,7 @@ const PathwayFinder = () => {
 
   return (
     <ui.View>
+      <PalMultiSelect />
       <ui.Form
         validationBehavior="native"
         onReset={() => {

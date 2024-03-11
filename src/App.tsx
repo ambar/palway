@@ -1,4 +1,4 @@
-import {Content, Provider, defaultTheme} from '@adobe/react-spectrum'
+import {Provider, defaultTheme} from '@adobe/react-spectrum'
 import {NoSSR, useDark} from 'rspress/runtime'
 import PathwayFinder from './PathwayFinder'
 import './index.css'
