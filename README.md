@@ -2,7 +2,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/ambar/palway/badge.svg?branch=main)](https://coveralls.io/github/ambar/palway?branch=main)
 
-Breading calculator for Palworld.
+Breeding calculator for Palworld.
 
 ![screenshot](./meta/screenshot-1.jpg)
 
