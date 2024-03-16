@@ -140,3 +140,5 @@ const palNames = [
 ] as const
 
 export type PalName = (typeof palNames)[number]
+
+export const palNameSet = new Set(palNames)

@@ -1,4 +1,4 @@
-import {test, expect} from 'vitest'
+import {expect, test} from 'vitest'
 import {normalPals, normalPalsSortedByCombiRank} from '../pals'
 
 test('normalPalsSortedByCombiRank', () => {
@@ -12,7 +12,7 @@ test('normalPalsSortedByCombiRank', () => {
 })
 
 test('normalPals', () => {
-  expect(normalPals.length).toMatchInlineSnapshot(`137`)
+  expect(normalPals.length).toMatchInlineSnapshot('137')
   expect(normalPals[0].pal_name).toMatchInlineSnapshot(`"Lamball"`)
   expect(normalPals[normalPals.length - 1].pal_name).toMatchInlineSnapshot(
     `"Jetragon"`,

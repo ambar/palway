@@ -35,7 +35,7 @@ const getImages = once(() => {
   })
 })
 
-const DotGraph = ({text}: {text: string}) => {
+const DotGraph = ({text}: {text: string | null}) => {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

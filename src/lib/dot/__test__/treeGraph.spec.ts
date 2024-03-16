@@ -1,6 +1,6 @@
-import {test, expect} from 'vitest'
-import {makeTreeGraph} from '../treeGraph'
+import {expect, test} from 'vitest'
 import {createTree} from '../../search'
+import {makeTreeGraph} from '../treeGraph'
 
 const makeTreeResult = (root, parent) => {
   const nodes = []

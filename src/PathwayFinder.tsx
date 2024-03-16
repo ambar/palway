@@ -1,7 +1,6 @@
 import * as ui from '@adobe/react-spectrum'
 import NoSearchResults from '@spectrum-icons/illustrations/NoSearchResults'
-import More from '@spectrum-icons/workflow/More'
-
+// import More from '@spectrum-icons/workflow/More'
 // import {motion, AnimatePresence} from 'framer-motion'
 import {useEffect, useState} from 'react'
 import DotGraph from './DotGraph'
@@ -10,7 +9,8 @@ import {type PalPair, findReverseParents, getCombo} from './lib/combos'
 import devlog from './lib/devlog'
 import {makeComboGraph} from './lib/dot/comboGraph'
 import {makeTreeGraph} from './lib/dot/treeGraph'
-import type {PalName} from './lib/palNames'
+import {type PalName, palNameSet} from './lib/palNames'
+import {useBooleanParam, useEnumParam} from './lib/params'
 import {type PalNode, type PalTree, createTree} from './lib/search'
 import useI18n from './lib/useI18n'
 
@@ -46,23 +46,23 @@ const log = devlog('PathwayFinder')
  */
 const PathwayFinder = () => {
   const t = useI18n()
-  const [parent1, setParent1] = useState<PalName>()
-  const [parent2, setParent2] = useState<PalName>()
-  const [child, setChild] = useState<PalName>()
-  const [graph, setGraph] = useState('')
-  const [result, setResult] = useState<Result | null>()
-  const [rangeType, setRangeType] = useState<'Layer' | 'All'>('Layer')
+  const [parent1, setParent1] = useEnumParam<PalName>('parent1', palNameSet)
+  const [parent2, setParent2] = useEnumParam<PalName>('parent2', palNameSet)
+  const [child, setChild] = useEnumParam<PalName>('child', palNameSet)
+  const [graph, setGraph] = useState<string | null>(null)
+  const [result, setResult] = useState<Result | null>(null)
   // const [styleKeys, setStyleKeys] = useState(
   //   () => new Set<StyleKey>(['Image', 'Vertical']),
   // )
-  const [withImage, setWithImage] = useState(true)
-  const [isVertical, setIsVertical] = useState(true)
+  const [layeredFilter, setLayeredFilter] = useBooleanParam('layer', true)
+  const [withImage, setWithImage] = useBooleanParam('image', true)
+  const [isVertical, setIsVertical] = useBooleanParam('vertical', true)
 
   useEffect(() => {
     if (parent1 && parent2) {
       const itsChild = getCombo(parent1, parent2)
       if (!itsChild) {
-        setChild(undefined)
+        setChild(null)
         setResult(null)
         return
       }
@@ -124,7 +124,7 @@ const PathwayFinder = () => {
     }
 
     setResult(null)
-  }, [parent1, parent2, child])
+  }, [parent1, parent2, child, setChild])
 
   useEffect(() => {
     if (!result) {
@@ -141,14 +141,13 @@ const PathwayFinder = () => {
     } else if (result.type === 'tree') {
       const {nodes, range, tree, parent, child} = result
       console.time('makeTreeGraph')
-      const sliced =
-        rangeType === 'All'
-          ? nodes.slice(range.start - 1, range.end)
-          : result.layerRanges.flatMap(x => {
-              const range = x.range
-              const layer = result.layers[x.layer]
-              return layer.slice(Math.max(0, range.start - 1), range.end)
-            })
+      const sliced = layeredFilter
+        ? nodes.slice(range.start - 1, range.end)
+        : result.layerRanges.flatMap(x => {
+            const range = x.range
+            const layer = result.layers[x.layer]
+            return layer.slice(Math.max(0, range.start - 1), range.end)
+          })
       const treeGraph = makeTreeGraph(sliced, tree.root, parent, child, t, {
         preset: withImage ? 'image' : 'noImage',
         direction: isVertical ? 'BT' : 'LR',
@@ -157,7 +156,7 @@ const PathwayFinder = () => {
       log(tree, {nodes, range}, sliced)
       setGraph(treeGraph)
     }
-  }, [result, rangeType, withImage, isVertical, t])
+  }, [result, layeredFilter, withImage, isVertical, t])
 
   // const styleMenu = (
   //   <ui.MenuTrigger>
@@ -200,8 +199,8 @@ const PathwayFinder = () => {
           direction="column"
           gap=".5em"
         >
-          <ui.Flex justifyContent="center" wrap="wrap" columnGap=".5em">
-            <ui.RadioGroup
+          <ui.Flex justifyContent="center" wrap="wrap" columnGap=".1em">
+            {/* <ui.RadioGroup
               label={t('range')}
               orientation="horizontal"
               labelPosition="side"
@@ -210,7 +209,11 @@ const PathwayFinder = () => {
             >
               <ui.Radio value="Layer">{t('layer')}</ui.Radio>
               <ui.Radio value="All">{t('all')}</ui.Radio>
-            </ui.RadioGroup>
+            </ui.RadioGroup> */}
+
+            <ui.Switch isSelected={layeredFilter} onChange={setLayeredFilter}>
+              {t('layer')}
+            </ui.Switch>
 
             <ui.Switch isSelected={withImage} onChange={setWithImage}>
               {t('image')}
@@ -222,7 +225,7 @@ const PathwayFinder = () => {
           </ui.Flex>
 
           <ui.Flex justifyContent="center" wrap>
-            {rangeType === 'Layer' &&
+            {layeredFilter &&
               result.layerRanges.map((x, i) => (
                 <ui.RangeSlider
                   key={x.layer}
@@ -243,7 +246,7 @@ const PathwayFinder = () => {
               ))}
           </ui.Flex>
 
-          {rangeType === 'All' && (
+          {!layeredFilter && (
             <ui.RangeSlider
               marginX="auto"
               maxWidth={1000}
