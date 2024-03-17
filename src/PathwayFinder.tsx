@@ -42,7 +42,7 @@ const defaultRange = {start: 1, end: 5}
 const log = devlog('PathwayFinder')
 
 /**
- * Breading calculator for Palworld
+ * Breeding Pathway Finder
  */
 const PathwayFinder = () => {
   const t = useI18n()
