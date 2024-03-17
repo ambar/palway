@@ -141,7 +141,7 @@ const PathwayFinder = () => {
     } else if (result.type === 'tree') {
       const {nodes, range, tree, parent, child} = result
       console.time('makeTreeGraph')
-      const sliced = layeredFilter
+      const sliced = !layeredFilter
         ? nodes.slice(range.start - 1, range.end)
         : result.layerRanges.flatMap(x => {
             const range = x.range
@@ -270,10 +270,10 @@ const PathwayFinder = () => {
       <ui.Form
         validationBehavior="native"
         onReset={() => {
-          setParent1('')
-          setParent2('')
-          setChild('')
-          setGraph('')
+          setParent1(null)
+          setParent2(null)
+          setChild(null)
+          setGraph(null)
         }}
         UNSAFE_style={{
           margin: 'auto 1em',
@@ -291,7 +291,7 @@ const PathwayFinder = () => {
             selectedKey={parent1}
             onInputChange={v => {
               if (!v) {
-                setParent1('')
+                setParent1(null)
               }
             }}
             onSelectionChange={key => {
@@ -303,7 +303,7 @@ const PathwayFinder = () => {
             selectedKey={parent2}
             onInputChange={v => {
               if (!v) {
-                setParent2('')
+                setParent2(null)
               }
             }}
             onSelectionChange={key => {
@@ -315,7 +315,7 @@ const PathwayFinder = () => {
             selectedKey={child}
             onSelectionChange={key => {
               if (parent1 && parent2) {
-                setParent2('')
+                setParent2(null)
               }
               setChild(key)
             }}

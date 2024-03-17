@@ -38,10 +38,10 @@ export const useEnumParam = <T extends string>(
     return v && valueSet.has(v as T) ? (v as T) : defaultValue
   }, [key, defaultValue, searchParams, valueSet])
   const setValue = useCallback(
-    (value: T) => {
+    (value: T | null) => {
       setLoc(loc => {
         const searchParams = new URLSearchParams(loc.searchParams)
-        if (valueSet.has(value)) {
+        if (value && valueSet.has(value)) {
           searchParams.set(key, value)
         } else {
           searchParams.delete(key)
