@@ -13,6 +13,7 @@ import {type PalName, palNameSet} from './lib/palNames'
 import {useBooleanParam, useEnumParam} from './lib/params'
 import {type PalNode, type PalTree, createTree} from './lib/search'
 import useI18n from './lib/useI18n'
+import {usePreserveSearchParams} from './lib/tmp'
 
 type Range = {
   start: number
@@ -45,6 +46,7 @@ const log = devlog('PathwayFinder')
  * Breeding Pathway Finder
  */
 const PathwayFinder = () => {
+  usePreserveSearchParams()
   const t = useI18n()
   const [parent1, setParent1] = useEnumParam<PalName>('parent1', palNameSet)
   const [parent2, setParent2] = useEnumParam<PalName>('parent2', palNameSet)
