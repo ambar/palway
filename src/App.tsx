@@ -19,7 +19,9 @@ const ssrStyleFix = `{
   rootClass.toggle("${defaultTheme.light['spectrum--light']}", !isDark)
   rootClass.toggle("${defaultTheme.dark['spectrum--darkest']}", isDark)
   rootStyle.colorScheme = isDark ? 'dark' : 'light'
-}`.replace(/\n/g, ';')
+}`
+  .replace(/\n/g, ';')
+  .replace(/\s{2,}/g, '')
 
 function App() {
   const dark = useDark()
