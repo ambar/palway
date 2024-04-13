@@ -32,8 +32,8 @@ test('Jetragon -> Lamball', () => {
     {
       "layer": 7,
       "match": 170,
-      "node": 23173,
-      "pair": 11586,
+      "node": 23171,
+      "pair": 11585,
     }
   `)
 })
