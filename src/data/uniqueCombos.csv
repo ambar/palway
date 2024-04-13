@@ -1,29 +1,29 @@
-ResultIndex,ResultName,,Parent1Index,Parent1Name,,Parent1Index2,Parent2Name
-85,Relaxaurus Lux,,85,Relaxaurus,,7,Sparkit
-40,Incineram Noct,,40,Incineram,,66,Maraith
-24,Mau Cryst,,24,Mau,,10,Pengullet
-71,Vanwyrm Cryst,,71,Vanwyrm,,57,Foxcicle
-37,Eikthyrdeer Terra,,37,Eikthyrdeer,,32,Hangyu
-80,Elphidran Aqua,,80,Elphidran,,65,Surfent
-58,Pyrin Noct,,58,Pyrin,,75,Katress
-90,Mammorest Cryst,,90,Mammorest,,91,Wumpo
-33,Mossanda Lux,,33,Mossanda,,103,Grizzbolt
-64,Dinossom Lux,,64,Dinossom,,60,Rayhound
-12,Jolthog Cryst,,12,Jolthog,,10,Pengullet
-110,Frostallion Noct,,110,Frostallion,,97,Helzephyr
-89,Ice Kingpaca,,89,Kingpaca,,59,Reindrix
-104,Lyleen Noct,,104,Lyleen,,99,Menasting
-45,Leezpunk Ignis,,45,Leezpunk,,70,Flambelle
-84,Blazehowl Noct,,84,Blazehowl,,94,Felbat
-48,Robinquill Terra,,48,Robinquill,,22,Fuddler
-86,Broncherry Aqua,,86,Broncherry,,6,Fuack
-65,Surfent Terra,,65,Surfent,,43,Dumud
-31,Gobfin Ignis,,31,Gobfin,,9,Rooby
-102,Suzaku Aqua,,102,Suzaku,,101,Jormuntide
-88,Ice Reptyro,,88,Reptyro,,57,Foxcicle
-32,Hangyu Cryst,,32,Hangyu,,53,Swee
-104,Lyleen,,33,Mossanda,,87,Petallia
-105,Faleris,,71,Vanwyrm,,100,Anubis
-103,Grizzbolt,,33,Mossanda,,60,Rayhound
-106,Orserk,,103,Grizzbolt,,85,Relaxaurus
-107,Shadowbeak,,61,Kitsun,,98,Astegon
+ResultName,Parent1Name,Parent2Name
+Relaxaurus Lux,Relaxaurus,Sparkit
+Incineram Noct,Incineram,Maraith
+Mau Cryst,Mau,Pengullet
+Vanwyrm Cryst,Vanwyrm,Foxcicle
+Eikthyrdeer Terra,Eikthyrdeer,Hangyu
+Elphidran Aqua,Elphidran,Surfent
+Pyrin Noct,Pyrin,Katress
+Mammorest Cryst,Mammorest,Wumpo
+Mossanda Lux,Mossanda,Grizzbolt
+Dinossom Lux,Dinossom,Rayhound
+Jolthog Cryst,Jolthog,Pengullet
+Frostallion Noct,Frostallion,Helzephyr
+Ice Kingpaca,Kingpaca,Reindrix
+Lyleen Noct,Lyleen,Menasting
+Leezpunk Ignis,Leezpunk,Flambelle
+Blazehowl Noct,Blazehowl,Felbat
+Robinquill Terra,Robinquill,Fuddler
+Broncherry Aqua,Broncherry,Fuack
+Surfent Terra,Surfent,Dumud
+Gobfin Ignis,Gobfin,Rooby
+Suzaku Aqua,Suzaku,Jormuntide
+Ice Reptyro,Reptyro,Foxcicle
+Hangyu Cryst,Hangyu,Swee
+Lyleen,Mossanda,Petallia
+Faleris,Vanwyrm,Anubis
+Grizzbolt,Mossanda,Rayhound
+Orserk,Grizzbolt,Relaxaurus
+Shadowbeak,Kitsun,Astegon
