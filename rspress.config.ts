@@ -15,6 +15,7 @@ export default defineConfig({
   },
   themeConfig: {
     search: false,
+    localeRedirect: 'never',
     // nav: [
     //   {
     //     text: 'Links',
