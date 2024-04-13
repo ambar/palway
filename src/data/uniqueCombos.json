@@ -26,5 +26,6 @@
   {"ResultName": "Faleris", "Parent1Name": "Vanwyrm", "Parent2Name": "Anubis"},
   {"ResultName": "Grizzbolt", "Parent1Name": "Mossanda", "Parent2Name": "Rayhound"},
   {"ResultName": "Orserk", "Parent1Name": "Grizzbolt", "Parent2Name": "Relaxaurus"},
-  {"ResultName": "Shadowbeak", "Parent1Name": "Kitsun", "Parent2Name": "Astegon"}
+  {"ResultName": "Shadowbeak", "Parent1Name": "Kitsun", "Parent2Name": "Astegon"},
+  {"ResultName": "Jormuntide Ignis", "Parent1Name": "Jormuntide", "Parent2Name": "Blazehowl"}
 ]

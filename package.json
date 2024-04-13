@@ -12,6 +12,7 @@
     "lint": "biome check .",
     "lint:fix": "biome check --apply .",
     "lint:fix-unsafe": "biome check --apply-unsafe .",
+    "build-static-combos": "tsx scripts/genUniqueCombos.mjs && tsx scripts/genAllCombos.mjs",
     "test": "vitest",
     "test:coverage": "vitest run --coverage --coverage.exclude scripts"
   },
