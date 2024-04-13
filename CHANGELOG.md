@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/ambar/palway/compare/v0.0.1...v0.0.2) (2024-04-13)
+
+
+### Features
+
+* turn off localeRedirect ([69f832f](https://github.com/ambar/palway/commit/69f832f708457d1aea659193ccb5b1303105e37e))
+
 ### 0.0.1 (2024-04-13)
 
 
